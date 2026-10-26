@@ -48,7 +48,7 @@ As outras escutas da lista A seguem depois da v0.1.0, como melhoria.
 - [x] o fluxo da CI (só nas tags `v*`, JUCE 9.0.3), escrito, **ainda não
       rodado**: roda no primeiro push de uma tag (~160 min cobrados);
 - [x] `CREDITS_AND_SOURCES.md` (com o JUCE e o linuxdeploy), `INSTALL.md`
-      (4 línguas), `CHANGELOG.md`; o README público espera a decisão do autor;
+      (4 línguas), `CHANGELOG.md`, o README público;
 - [ ] a pendência do true peak normativo (README, estágio de saída).
 
 **Validado localmente (2026-10-26, `1c4b7fb`):** ctest 83/83; auditoria de
@@ -74,8 +74,12 @@ porque foi feito nesta máquina; o da CI, no Ubuntu 22.04, pede 2.35.
       - o status "RT não" passou às quatro línguas;
 - [ ] a revisão de um falante nativo de FR e de ES continua desejável;
 - [x] o `INSTALL.md` nas quatro línguas (EN, PT, FR, ES; o ES de "usted");
-- [ ] o README público curto (precisa da decisão do autor: mover o diário
-      atual para `docs/` é uma reorganização).
+- [x] o README público curto nas quatro línguas, com uma imagem do app
+      tocando (`74ae4ef`); o diário de desenvolvimento, que era o README,
+      está em `docs/DESENVOLVIMENTO.md` (autorizado pelo autor em
+      2026-10-26), com o guia rápido de "Como tocar";
+- [ ] o status mostra o nome da linguagem harmônica em português
+      ("funcional") com a interface em outra língua: traduzir.
 
 **Repositório** (2026-10-26): este diretório é agora o repositório próprio
 (`19140e2`, histórico limpo; o anterior fica no `rasgo-instruments` até
