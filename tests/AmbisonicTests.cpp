@@ -194,8 +194,10 @@ int main()
             / ("aquorbium-ambix-test-" + std::to_string(std::chrono::steady_clock::now().time_since_epoch().count()) + ".wav");
         constexpr std::size_t frames = 48000;
         {
+            std::cout << "ambix: " << file.string() << '\n';
             aquorbium::app::AmbisonicCapture capture(file.string(), 48000, 10);
             check(capture.start(), "ambix capture: starts");
+            std::cout << "ambix: started\n";
             std::array<std::array<float, 480>, 4> blockData {};
             for (std::size_t done = 0; done < frames; done += 480)
             {
@@ -207,13 +209,18 @@ int main()
                 capture.push(blockData[0].data(), blockData[1].data(), blockData[2].data(), blockData[3].data(), 480);
                 std::this_thread::sleep_for(std::chrono::microseconds(200));
             }
+            std::cout << "ambix: pushed\n";
             capture.stop();
+            std::cout << "ambix: stopped\n";
             check(capture.done() && !capture.failed() && capture.captured() == frames && capture.dropped() == 0,
                   "ambix capture: every frame written");
             // an existing take is never overwritten
             aquorbium::app::AmbisonicCapture again(file.string(), 48000, 10);
+            std::cout << "ambix: opening the same file again\n";
             check(!again.start(), "ambix capture: never overwrites a file");
+            std::cout << "ambix: refused\n";
         }
+        std::cout << "ambix: reading back\n";
         std::ifstream in(file, std::ios::binary);
         const std::vector<unsigned char> bytes { std::istreambuf_iterator<char>(in), {} };
         const auto u16 = [&bytes](std::size_t at) { return static_cast<unsigned>(bytes[at] | (bytes[at + 1] << 8)); };
