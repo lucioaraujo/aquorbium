@@ -50,6 +50,23 @@ As outras escutas da lista A seguem depois da v0.1.0, como melhoria.
       público curto; o diário atual vai para `docs/`;
 - [ ] a pendência do true peak normativo (README, estágio de saída).
 
+**Idiomas** (o autor, 2026-10-26: "há a questão dos idiomas também"):
+- [x] a interface completa nas quatro línguas: 625 textos, nenhum vazio;
+      só 8 iguais ao inglês, todos de propósito (cognatos e notação técnica:
+      "STRUCTURE ACTIVE", "chaos (Duffing)", os diagramas do FM);
+- [ ] a revisão nativa do FR e do ES (qualidade, não falta de texto);
+- [ ] o README público e o `INSTALL` nas quatro línguas, como nos outros
+      instrumentos.
+
+**Repositório** (2026-10-26): este diretório é agora o repositório próprio
+(`19140e2`, histórico limpo; o anterior fica no `rasgo-instruments` até
+`02292a1`; cópia de preservação em
+`RASGO_ARQUIVO/.local-preservation-aquorbium-20261026/`). O `biome.odt`
+(brainstorm com texto gerado por IA) fica só local. Os caminhos do disco do
+autor saíram dos documentos. Falta criar `lucioaraujo/aquorbium` no GitHub
+(o autor: a criação foi barrada pela permissão do modo automático) e o
+push, quando o autor pedir.
+
 ## Semente de abertura, VARIA e identidade — 2026-10-24/26
 
 - [x] **Semente de abertura** (o autor: "a cada vez que o instrumento for
