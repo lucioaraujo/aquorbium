@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="120 105 1470 350" role="img" aria-label="Aquorbium — sonar e lettering">
+  <defs>
+    <clipPath id="sonar-screen-bare"><circle cx="256" cy="256" r="190"/></clipPath>
+  </defs>
+  <!-- Round sonar face only; transparent canvas, no rectangular housing. -->
+  <g transform="translate(105 96) scale(.72)">
+    <circle cx="256" cy="256" r="207" fill="#17292f" stroke="#65737a" stroke-width="5"/>
+    <circle cx="256" cy="256" r="198" fill="#0a171d" stroke="#50ded5" stroke-opacity=".52" stroke-width="3"/>
+    <circle cx="256" cy="256" r="190" fill="#0b2128" stroke="#50ded5" stroke-width="5"/>
+    <g clip-path="url(#sonar-screen-bare)">
+      <g fill="none" stroke="#50ded5" stroke-opacity=".25" stroke-width="2">
+        <circle cx="256" cy="256" r="142"/><circle cx="256" cy="256" r="94"/><circle cx="256" cy="256" r="47"/>
+        <path d="M66 256h380M256 66v380M122 122l268 268M390 122 122 390"/>
+      </g>
+      <path d="M256 256 420.5 161 A190 190 0 0 1 445 239 Z" fill="#50ded5" fill-opacity=".42"/>
+      <path d="M256 256 414 165" stroke="#50ded5" stroke-opacity=".88" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="333" cy="187" r="9" fill="#f3b75b"/>
+      <circle cx="179" cy="225" r="8" fill="#ef715f"/>
+      <circle cx="303" cy="335" r="8" fill="#9e84f4"/>
+      <circle cx="205" cy="315" r="9" fill="#77d28e"/>
+      <circle cx="256" cy="256" r="7" fill="#c3ceca"/>
+    </g>
+    <g stroke="#8c9b9d" stroke-width="3" stroke-linecap="square" opacity=".82">
+      <path d="M256 53v17M256 442v17M53 256h17M442 256h17"/>
+      <path d="m112 112 12 12m264 264 12 12M400 112l-12 12M124 388l-12 12"/>
+    </g>
+    <path d="M250 48h12v22h-12z" fill="#c3ceca"/>
+    <circle cx="256" cy="256" r="4" fill="#c3ceca"/>
+  </g>
+  <!-- Hand-drawn wordmark, centered vertically with the sonar. -->
+  <g transform="translate(560 220) scale(1.13)" fill="none" stroke="#d4ded9" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M0 96 30 8h30l30 88M16 62h58"/>
+    <path d="M119 8h49l15 15v58l-15 15h-49l-15-15V23zM151 68l28 32"/>
+    <path d="M211 8v68l15 20h40l15-20V8"/>
+    <path d="M329 8h47l16 16v56l-16 16h-47l-16-16V24z"/>
+    <path d="M420 96V8h49l16 15v25l-16 15h-49M469 63l24 33"/>
+    <path d="M522 8v88M522 8h46l14 14v17l-14 14h-46M522 53h48l14 14v14l-14 15h-48"/>
+    <path d="M623 8h58M652 8v88M623 96h58"/>
+    <path d="M718 8v68l15 20h40l15-20V8"/>
+    <path d="M817 96V8l34 39 34-39v88"/>
+  </g>
+</svg>

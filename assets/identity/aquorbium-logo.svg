@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Aquorbium">
+  <!-- A logo do Aquorbium (proposta, 2026-10-20): a esfera de vidro do
+       aquário cortada pela linha d'água; dentro, os cinco organismos nas
+       cores do app (MORPH ciano, GRAIN âmbar, MODAL coral, PULSAR violeta,
+       STRING verde) ligados por fios da teia de relações; em volta, as
+       marcas de rumo de um sonar e a varredura com persistência - o painel
+       de submarino da interface. Desenho próprio, sem fontes nem material
+       de terceiros. -->
+  <defs>
+    <radialGradient id="glass" cx="42%" cy="34%" r="70%">
+      <stop offset="0" stop-color="#173a42"/>
+      <stop offset="1" stop-color="#06131a"/>
+    </radialGradient>
+    <linearGradient id="sweep" x1="128" y1="128" x2="196" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#50ded5" stop-opacity="0"/>
+      <stop offset="1" stop-color="#50ded5" stop-opacity="0.38"/>
+    </linearGradient>
+    <clipPath id="orb"><circle cx="128" cy="128" r="88"/></clipPath>
+  </defs>
+  <rect width="256" height="256" rx="48" fill="#050d12"/>
+  <!-- bearings: twelve ticks, north longer and amber -->
+  <line x1="128" y1="18" x2="128" y2="31" stroke="#f3b75b" stroke-width="6" stroke-linecap="round"/>
+  <g stroke="#50ded5" stroke-width="4" stroke-linecap="round" opacity="0.6">
+    <line x1="182" y1="34.5" x2="177" y2="43.2"/>
+    <line x1="221.5" y1="74" x2="212.8" y2="79"/>
+    <line x1="236" y1="128" x2="226" y2="128"/>
+    <line x1="221.5" y1="182" x2="212.8" y2="177"/>
+    <line x1="182" y1="221.5" x2="177" y2="212.8"/>
+    <line x1="128" y1="236" x2="128" y2="226"/>
+    <line x1="74" y1="221.5" x2="79" y2="212.8"/>
+    <line x1="34.5" y1="182" x2="43.2" y2="177"/>
+    <line x1="20" y1="128" x2="30" y2="128"/>
+    <line x1="34.5" y1="74" x2="43.2" y2="79"/>
+    <line x1="74" y1="34.5" x2="79" y2="43.2"/>
+  </g>
+  <!-- the glass sphere -->
+  <circle cx="128" cy="128" r="88" fill="url(#glass)"/>
+  <g clip-path="url(#orb)">
+    <!-- the sonar sweep -->
+    <path d="M128 128 L128 40 A88 88 0 0 1 204 84 Z" fill="url(#sweep)"/>
+    <!-- the water below the wave -->
+    <path d="M30 138 C 58 120, 82 120, 108 138 S 158 156, 184 138 S 220 122, 230 132 L 230 230 L 30 230 Z"
+          fill="#50ded5" fill-opacity="0.16"/>
+    <path d="M30 138 C 58 120, 82 120, 108 138 S 158 156, 184 138 S 220 122, 230 132"
+          fill="none" stroke="#50ded5" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+  </g>
+  <!-- the web of relations -->
+  <g fill="none" stroke-linecap="round">
+    <line x1="152" y1="94" x2="98" y2="160" stroke="#ef715f" stroke-width="3.5" opacity="0.9"/>
+    <line x1="152" y1="94" x2="108" y2="104" stroke="#50ded5" stroke-width="2.5" opacity="0.7"/>
+    <line x1="108" y1="104" x2="132" y2="176" stroke="#50ded5" stroke-width="2.5" opacity="0.7"/>
+    <line x1="132" y1="176" x2="170" y2="160" stroke="#ff8fc8" stroke-width="2.5" opacity="0.75"/>
+  </g>
+  <!-- the five organisms -->
+  <circle cx="152" cy="94" r="12" fill="#50ded5" fill-opacity="0.22"/>
+  <circle cx="152" cy="94" r="7.5" fill="#50ded5"/>
+  <circle cx="108" cy="104" r="6.5" fill="#f3b75b"/>
+  <circle cx="132" cy="176" r="6.5" fill="#ef715f"/>
+  <circle cx="98" cy="160" r="6" fill="#9e84f4"/>
+  <circle cx="170" cy="160" r="6" fill="#77d28e"/>
+  <!-- the rim of the glass, and its highlight -->
+  <circle cx="128" cy="128" r="88" fill="none" stroke="#50ded5" stroke-width="6"/>
+  <path d="M74 76 A70 70 0 0 1 118 52" fill="none" stroke="#dfebe6" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+</svg>

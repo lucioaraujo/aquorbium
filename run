@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
+app=./build-reactivation-20260915/src/app/AquorbiumApp_artefacts/Release/Aquorbium
+if [[ ! -x "$app" ]]; then
+    printf 'Aquorbium não compilado. Execute: cmake --build build-reactivation-20260915 --target AquorbiumApp --parallel 1\n' >&2
+    exit 1
+fi
+if [[ "${1:-}" == diagnostico ]]; then
+    shift
+    if [[ "$#" -ne 0 ]]; then
+        printf 'Uso: ./run diagnostico\n' >&2
+        exit 1
+    fi
+    session="$PWD/validation-output/escuta-$(date +%Y%m%d-%H%M%S)"
+    printf 'Captura de 60 s no áudio interno: %s\n' "$session"
+    exec timeout --kill-after=5s 75s "$app" \
+        "--capture-audio=$session" \
+        '--capture-output=Default ALSA Output (currently PipeWire Media Server)' \
+        --capture-seconds=60
+fi
+exec "$app" "$@"

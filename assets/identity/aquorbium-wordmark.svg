@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 130" role="img" aria-label="AQUORBIUM">
+  <!-- Original vector lettering, drawn for Aquorbium without a font file. -->
+  <g transform="translate(5 7) scale(1.13)" fill="none" stroke="#d4ded9" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M0 96 30 8h30l30 88M16 62h58"/>
+    <path d="M119 8h49l15 15v58l-15 15h-49l-15-15V23zM151 68l28 32"/>
+    <path d="M211 8v68l15 20h40l15-20V8"/>
+    <path d="M329 8h47l16 16v56l-16 16h-47l-16-16V24z"/>
+    <path d="M420 96V8h49l16 15v25l-16 15h-49M469 63l24 33"/>
+    <path d="M522 8v88M522 8h46l14 14v17l-14 14h-46M522 53h48l14 14v14l-14 15h-48"/>
+    <path d="M623 8h58M652 8v88M623 96h58"/>
+    <path d="M718 8v68l15 20h40l15-20V8"/>
+    <path d="M817 96V8l34 39 34-39v88"/>
+  </g>
+</svg>

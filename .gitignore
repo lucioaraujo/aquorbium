@@ -1,0 +1,10 @@
+.local-build/
+build/
+cmake-build-*/
+build-*/
+validation-output/
+
+# local only, never published: the brainstorm document (AI-generated text)
+biome.odt
+.codex/
+.agents/
