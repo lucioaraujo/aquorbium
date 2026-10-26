@@ -4801,7 +4801,7 @@ private:
                     + "  LATE " + juce::String(overBudgetCounter.load(std::memory_order_relaxed))
                     + (realtimePriority.load(std::memory_order_relaxed) > 0
                            ? "  RT " + juce::String(realtimePriority.load(std::memory_order_relaxed))
-                           : (realtimeAsked.load(std::memory_order_relaxed) ? utf8("  RT não") : juce::String()))
+                           : (realtimeAsked.load(std::memory_order_relaxed) ? "  " + aquorbium::app::T(aquorbium::app::S::realtimeRefused) : juce::String()))
                     + "  CLIP " + juce::String(clippedBlockCounter.load(std::memory_order_relaxed))
                     + "  GUI " + juce::String(guiPauseCounter)
                     + "  SEED " + juce::String(static_cast<juce::int64>(sessionSeed))

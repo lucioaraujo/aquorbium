@@ -169,7 +169,7 @@ inline const std::array<std::array<L4, 3>, 14> macroNames {{
     {{ { "-", "-", "-", "-" }, { "-", "-", "-", "-" }, { "-", "-", "-", "-" } }},
     {{ { "RATIO", "RAZÃO", "RAPPORT", "RAZÓN" }, { "INDEX", "ÍNDICE", "INDICE", "ÍNDICE" }, { "FEEDBACK", "REALIM.", "RÉTROACT.", "REALIM." } }},
     {{ { "POSITION", "POSIÇÃO", "POSITION", "POSICIÓN" }, { "WARP", "WARP", "WARP", "WARP" }, { "DRIFT", "DERIVA", "DÉRIVE", "DERIVA" } }},
-    {{ { "TILT", "BRILHO", "PENTE", "BRILLO" }, { "ODD/EVEN", "ÍMPAR/PAR", "IMPAIR/PAIR", "IMPAR/PAR" }, { "STRETCH", "ESTICAR", "ÉTIREMENT", "ESTIRAR" } }},
+    {{ { "TILT", "BRILHO", "PENTE", "PENDIENTE" }, { "ODD/EVEN", "ÍMPAR/PAR", "IMPAIR/PAIR", "IMPAR/PAR" }, { "STRETCH", "ESTICAR", "ÉTIREMENT", "ESTIRAR" } }},
     {{ { "FORMANT", "FORMANTE", "FORMANT", "FORMANTE" }, { "PULSARET", "PULSARET", "PULSARET", "PULSARET" }, { "WINDOW", "JANELA", "FENÊTRE", "VENTANA" } }},
     {{ { "DAMPING", "AMORTEC.", "AMORTISS.", "AMORTIG." }, { "POSITION", "POSIÇÃO", "POSITION", "POSICIÓN" }, { "SUSTAIN", "SUSTENTO", "MAINTIEN", "SOSTÉN" } }},
     {{ { "STRUCTURE", "ESTRUTURA", "STRUCTURE", "ESTRUCTURA" }, { "BRIGHTNESS", "BRILHO", "BRILLANCE", "BRILLO" }, { "DAMPING", "AMORTEC.", "AMORTISS.", "AMORTIG." } }},
@@ -262,7 +262,7 @@ inline const L4 drive { "DRIVE", "DRIVE", "DRIVE", "DRIVE" };
 inline const L4 attack { "ATTACK", "ATAQUE", "ATTAQUE", "ATAQUE" };
 inline const L4 decay { "DECAY", "QUEDA", "DÉCLIN", "CAÍDA" };
 inline const L4 sustain { "SUSTAIN", "SUSTENTO", "MAINTIEN", "SOSTÉN" };
-inline const L4 release { "RELEASE", "SOLTURA", "RELÂCHE", "LIBERACIÓN" };
+inline const L4 release { "RELEASE", "SOLTURA", "RELÂCHEM.", "LIBERACIÓN" };
 inline const L4 curve { "CURVE", "CURVA", "COURBE", "CURVA" };
 inline const L4 rate { "RATE", "VELOC.", "VITESSE", "VELOC." };
 inline const L4 vibrato { "VIBRATO", "VIBRATO", "VIBRATO", "VIBRATO" };
@@ -300,7 +300,7 @@ inline const std::array<L4, 14> sourceTips {{
     { "Additive: up to 64 partials. TILT from dark to bright, ODD/EVEN from only even to only odd (a clarinet-like hollowness), STRETCH makes the partials inharmonic, towards a bell.",
       "Aditiva: até 64 parciais. BRILHO do escuro ao claro, ÍMPAR/PAR de só pares a só ímpares (um oco de clarinete), ESTICAR torna as parciais inarmônicas, rumo a um sino.",
       "Additive : jusqu'à 64 partiels. PENTE du sombre au brillant, IMPAIR/PAIR de seulement pairs à seulement impairs (un creux de clarinette), ÉTIREMENT rend les partiels inharmoniques, vers une cloche.",
-      "Aditiva: hasta 64 parciales. BRILLO de oscuro a brillante, IMPAR/PAR de solo pares a solo impares (un hueco de clarinete), ESTIRAR vuelve inarmónicos los parciales, hacia una campana." },
+      "Aditiva: hasta 64 parciales. PENDIENTE de oscuro a brillante, IMPAR/PAR de solo pares a solo impares (un hueco de clarinete), ESTIRAR vuelve inarmónicos los parciales, hacia una campana." },
     { "Pulsar (Curtis Roads): a train of short grains at the note's rate. FORMANT sets the grain's own frequency (0.1x to 8x the note), PULSARET its shape, WINDOW its envelope.",
       "Pulsar (Curtis Roads): um trem de grãos curtos na frequência da nota. FORMANTE define a frequência do próprio grão (0,1x a 8x a nota), PULSARET a forma, JANELA o envelope do grão.",
       "Pulsar (Curtis Roads) : un train de grains courts au rythme de la note. FORMANT règle la fréquence du grain (0,1x à 8x la note), PULSARET sa forme, FENÊTRE son enveloppe.",
@@ -328,7 +328,7 @@ inline const std::array<L4, 14> sourceTips {{
     { "Feedback: a loop with no input that sings by itself, like a no-input mixer - a delay tuned to the note, a low-pass and a soft clip. GAIN from barely singing to saturated; DETUNE adds a second tap off the period, and the loop jumps to other modes; COLOUR opens the low-pass.",
       "Realimentação: um laço sem entrada que canta sozinho, como uma mesa sem entrada - um atraso afinado na nota, um passa-baixa e uma saturação suave. GANHO vai de mal cantando a saturado; DESAFINAR soma um segundo tap fora do período, e o laço salta para outros modos; COR abre o passa-baixa.",
       "Rétroaction : une boucle sans entrée qui chante d'elle-même, comme une console sans entrée - un retard accordé sur la note, un passe-bas et une saturation douce. GAIN va d'à peine chantant à saturé ; DÉSACCORD ajoute une seconde prise hors période, et la boucle saute vers d'autres modes ; COULEUR ouvre le passe-bas.",
-      "Realimentación: un lazo sin entrada que canta solo, como una mesa sin entrada - un retardo afinado en la nota, un pasa-bajos y una saturación suave. GANANCIA va de apenas cantando a saturado; DESAFINAR suma una segunda toma fuera del período, y el lazo salta a otros modos; COLOR abre el pasa-bajos." } }};
+      "Realimentación: un lazo sin entrada que canta solo, como una mesa sin entrada - un retardo afinado en la nota, un paso bajo y una saturación suave. GANANCIA va de apenas cantando a saturado; DESAFINAR suma una segunda toma fuera del período, y el lazo salta a otros modos; COLOR abre el paso bajo." } }};
 // the sections
 inline const L4 mixSectionTip { "RING multiplies A by B (metallic sidebands). FM B>A makes B modulate A's pitch - it acts on the oscillating sources only: STRING, MATTER and BODY keep their tuning (a resonator retuned every sample is unstable). DRIFT lets the tuning breathe; ACCENT is how much the note's accent sets the level.",
                                 "RING multiplica A por B (bandas laterais metálicas). FM B>A faz B modular a altura de A - age só nas fontes osciladoras: CORDA, MATÉRIA e CORPO mantêm a afinação (um ressonador re-afinado a cada amostra é instável). DERIVA deixa a afinação respirar; ACENTO é quanto o acento da nota define o nível.",
@@ -382,18 +382,21 @@ inline const L4 listeningTip { "SPEAKERS: the stereo mix. HEADPHONES: each organ
 inline const L4 recTip { "Records what you hear (after MASTER and MUTE) to a 32-bit float WAV in Music/Aquorbium/<date>/, with a text file beside it: the session seed and the controls. Up to one hour.",
                          "Grava o que você ouve (depois do MASTER e do SILENCIAR) num WAV float de 32 bits em Música/Aquorbium/<data>/, com um texto ao lado: a semente da sessão e os controles. Até uma hora.",
                          "Enregistre ce que vous entendez (après MASTER et MUET) en WAV flottant 32 bits dans Musique/Aquorbium/<date>/, avec un texte à côté : la graine de la session et les commandes. Jusqu'à une heure.",
-                         "Graba lo que escuchas (después de MASTER y SILENCIAR) en un WAV flotante de 32 bits en Música/Aquorbium/<fecha>/, con un texto al lado: la semilla de la sesión y los controles. Hasta una hora." };
+                         "Graba lo que escucha (después de MASTER y SILENCIAR) en un WAV flotante de 32 bits en Música/Aquorbium/<fecha>/, con un texto al lado: la semilla de la sesión y los controles. Hasta una hora." };
 inline const L4 recSaved { "SAVED ", "GRAVADO ", "ENREGISTRÉ ", "GRABADO " };
 inline const L4 recFailed { "REC FAILED - check the folder and the free space",
                             "A GRAVAÇÃO FALHOU - confira a pasta e o espaço livre",
                             "L'ENREGISTREMENT A ÉCHOUÉ - vérifiez le dossier et l'espace libre",
-                            "LA GRABACIÓN FALLÓ - revisa la carpeta y el espacio libre" };
+                            "LA GRABACIÓN FALLÓ - revise la carpeta y el espacio libre" };
+// the status when the audio thread did not get real-time priority (2026-10-26;
+// it was "RT não" in every language)
+inline const L4 realtimeRefused { "RT no", "RT não", "RT non", "RT no" };
 // the VARIA and the opening seed (2026-10-24)
 inline const L4 vary { "VARY", "VARIA", "VARIE", "VARÍA" };
 inline const L4 varyTip { "VARY: the controls move by themselves over the music's time, slowly and in relation, around where the seed or your hand left them - warmer and quicker at the climax of the piece, settling at rest. The output stage never moves. Move any control and it breathes around your value. Off: everything stays where it is. Each opening also proposes another biome - water, light, population, bodies, which modules wake; the state you left is kept as opening.previousStateV1 in the settings.",
                           "VARIA: os controles se movem sozinhos ao longo da música, devagar e em relação, em torno de onde a semente ou a sua mão os deixou - mais quentes e rápidos no clímax da peça, assentando no repouso. O estágio de saída nunca se move. Mexa num controle e ele passa a respirar em torno do seu valor. Desligado: tudo fica onde está. Cada abertura também propõe outro bioma - água, luz, população, corpos, quais módulos acordam; o estado que você deixou fica guardado como opening.previousStateV1 nas preferências.",
                           "VARIE : les commandes bougent toutes seules au fil de la musique, lentement et en relation, autour de là où la graine ou votre main les a laissées - plus chaudes et rapides au climax de la pièce, apaisées au repos. L'étage de sortie ne bouge jamais. Touchez une commande et elle respire autour de votre valeur. Éteint : tout reste en place. Chaque ouverture propose aussi un autre biome - eau, lumière, population, corps, quels modules s'éveillent ; l'état que vous avez laissé est gardé comme opening.previousStateV1 dans les préférences.",
-                          "VARÍA: los controles se mueven solos a lo largo de la música, despacio y en relación, alrededor de donde la semilla o tu mano los dejó - más cálidos y rápidos en el clímax de la pieza, asentándose en el reposo. La etapa de salida nunca se mueve. Mueve un control y respirará alrededor de tu valor. Apagado: todo queda donde está. Cada apertura también propone otro bioma - agua, luz, población, cuerpos, qué módulos despiertan; el estado que dejaste queda guardado como opening.previousStateV1 en las preferencias." };
+                          "VARÍA: los controles se mueven solos a lo largo de la música, despacio y en relación, alrededor de donde la semilla o su mano los dejó - más cálidos y rápidos en el clímax de la pieza, asentándose en el reposo. La etapa de salida nunca se mueve. Mueva un control y respirará alrededor de su valor. Apagado: todo queda donde está. Cada apertura también propone otro bioma - agua, luz, población, cuerpos, qué módulos despiertan; el estado que usted dejó queda guardado como opening.previousStateV1 en las preferencias." };
 inline const L4 varyIntensityTip { "How far the VARY hand travels: at the left it holds still, in the middle (default) it breathes, at the right it reaches twice as far.",
                                    "Quanto a mão do VARIA anda: à esquerda fica parada, no meio (o padrão) respira, à direita vai duas vezes mais longe.",
                                    "Jusqu'où va la main de VARIE : à gauche elle s'arrête, au milieu (par défaut) elle respire, à droite elle va deux fois plus loin.",
@@ -467,11 +470,11 @@ inline const L4 matter { "MATTER", "MATÉRIA", "MATIÈRE", "MATERIA" };
 inline const L4 mix { "MIX", "MISTURA", "MÉLANGE", "MEZCLA" };
 inline const L4 timbreEcology { "ECOLOGICAL TIMBRE", "TIMBRE ECOLÓGICO", "TIMBRE ÉCOLOGIQUE", "TIMBRE ECOLÓGICO" };
 // SUPPORT (2026-10-23): the level of the support species
-inline const L4 support { "SUPPORT", "SUSTENTAÇÃO", "SOUTIEN", "SOSTÉN" };
+inline const L4 support { "SUPPORT", "SUSTENTAÇÃO", "SOUTIEN", "APOYO" };
 inline const L4 supportTip { "SUPPORT: the level of the three support organisms - GRAIN, MODAL, STRING - against MORPH and PULSAR, from -6 to +24 dB. They sit about 22-26 dB under the foreground; raise it to bring them forward. 0 dB at the start.",
                              "SUSTENTAÇÃO: o nível dos três organismos de sustentação - GRAIN, MODAL, STRING - diante de MORPH e PULSAR, de -6 a +24 dB. Eles ficam uns 22-26 dB abaixo do primeiro plano; suba para trazê-los à frente. 0 dB no início.",
                              "SOUTIEN : le niveau des trois organismes de soutien - GRAIN, MODAL, STRING - face à MORPH et PULSAR, de -6 à +24 dB. Ils sont environ 22-26 dB sous le premier plan ; montez pour les amener devant. 0 dB au départ.",
-                             "SOSTÉN: el nivel de los tres organismos de sostén - GRAIN, MODAL, STRING - frente a MORPH y PULSAR, de -6 a +24 dB. Quedan unos 22-26 dB por debajo del primer plano; súbalo para traerlos al frente. 0 dB al inicio." };
+                             "APOYO: el nivel de los tres organismos de apoyo - GRAIN, MODAL, STRING - frente a MORPH y PULSAR, de -6 a +24 dB. Quedan unos 22-26 dB por debajo del primer plano; súbalo para traerlos al frente. 0 dB al inicio." };
 // MEDIDORES, the meters card (2026-10-24)
 inline const L4 meters { "METERS", "MEDIDORES", "MESURES", "MEDIDORES" };
 inline const L4 metersStatus { "OUTPUT", "SAÍDA", "SORTIE", "SALIDA" };
@@ -500,7 +503,7 @@ inline const L4 lensFunction { "The lens on the glass", "A lupa no vidro", "La l
 inline const L4 lensTip { "LENS: the shape of the lens you hold on the glass - its radius, its reach into the water, how much it brings forward and how much it blurs the rest. The centre of each knob is the classic lens.",
                           "LUPA: a forma da lupa que você segura no vidro - o raio, o alcance na água, quanto ela traz à frente e quanto desfoca o resto. O centro de cada botão é a lupa clássica.",
                           "LOUPE : la forme de la loupe tenue sur la vitre - son rayon, sa portée dans l'eau, combien elle avance et combien elle floute le reste. Le centre de chaque bouton est la loupe classique.",
-                          "LUPA: la forma de la lupa que sostienes en el vidrio - el radio, el alcance en el agua, cuánto adelanta y cuánto desenfoca el resto. El centro de cada perilla es la lupa clásica." };
+                          "LUPA: la forma de la lupa que sostiene en el vidrio - el radio, el alcance en el agua, cuánto adelanta y cuánto desenfoca el resto. El centro de cada control es la lupa clásica." };
 inline const L4 eqBefore { "BEFORE", "ANTES", "AVANT", "ANTES" };
 inline const L4 eqAfter { "AFTER", "DEPOIS", "APRÈS", "DESPUÉS" };
 inline const L4 bodyTip { "This organism's second body: voice (formant song), matter (harmonic → membrane modes), breath, string, water drop, fold, membrane (water drum → skin), rubbed glass, choir, bow (a bowed string) or reed (a clarinet's tube).",
@@ -608,7 +611,7 @@ inline const std::array<L4, 22> acts {{
     { "modulation", "modulação", "modulation", "modulación" },
     { "cadence", "cadência", "cadence", "cadencia" },
     { "change of state", "mudança de estado", "changement d'état", "cambio de estado" },
-    { "the glass cracks", "ruptura do vidro", "le verre se fend", "el vidrio se rompe" },
+    { "the glass cracks", "ruptura do vidro", "le verre se fend", "el vidrio se agrieta" },
     { "bubbles", "bolhas", "bulles", "burbujas" },
     { "departure", "partida", "départ", "partida" },
     { "bubble net", "rede de bolhas", "filet de bulles", "red de burbujas" },
@@ -641,7 +644,7 @@ inline const std::array<ControlText, 63>& controlTexts()
 {
     static const std::array<ControlText, 63> table {{
         { "density", { "DENSITY", "DENSIDADE", "DENSITÉ", "DENSIDAD" },
-          { "How much happens: the ecosystem's desire for density.", "Quanto acontece: o desejo de densidade do ecossistema.", "Combien il se passe : le désir de densité de l'écosystème.", "Cuánto sucede: el deseo de densidad del ecosistema." },
+          { "How much happens: the ecosystem's desire for density.", "Quanto acontece: o desejo de densidade do ecossistema.", "Combien de choses se passent : le désir de densité de l'écosystème.", "Cuánto sucede: el deseo de densidad del ecosistema." },
           { "A tendency, not a command: the organisms move and sing more, the niche admits more events per bar. Combine with DRIFT: dense and calm is a slow crowd; dense and agitated is a storm.",
             "Uma tendência, não uma ordem: os organismos se movem e cantam mais, o nicho admite mais eventos por compasso. Combine com DERIVA: denso e calmo é uma multidão lenta; denso e agitado é uma tempestade.",
             "Une tendance, pas un ordre : les organismes bougent et chantent davantage, la niche admet plus d'événements par mesure. Combinez avec DÉRIVE : dense et calme, une foule lente ; dense et agité, une tempête.",
@@ -662,7 +665,7 @@ inline const std::array<ControlText, 63>& controlTexts()
             "Un cardumen cohesionado canta en homorritmia; uno disperso, en heterofonía. También pesa los lazos de alianza en la red." } },
         { "danger", { "DANGER", "PERIGO", "DANGER", "PELIGRO" },
           { "Fear in the water: sharper accents, more ornaments, more flights.", "Medo na água: acentos mais fortes, mais ornamentos, mais fugas.", "Peur dans l'eau : accents plus forts, plus d'ornements, plus de fuites.", "Miedo en el agua: acentos más fuertes, más ornamentos, más huidas." }, {} },
-        { "sparseFocus", { "SPARSE FOCUS", "FOCO ESPARSO", "FOCUS ÉPARS", "FOCO ESCASO" },
+        { "sparseFocus", { "SPARSE FOCUS", "FOCO ESPARSO", "FOCUS ÉPARS", "FOCO DISPERSO" },
           { "Listening mode: few, focused events.", "Modo de escuta: poucos eventos, focados.", "Mode d'écoute : peu d'événements, focalisés.", "Modo de escucha: pocos eventos, enfocados." }, {} },
         { "energyMemory", { "ENERGY MEMORY", "MEMÓRIA DE ENERGIA", "MÉMOIRE D'ÉNERGIE", "MEMORIA DE ENERGÍA" },
           { "Listening mode: energy remembered and released slowly.", "Modo de escuta: a energia lembrada e liberada devagar.", "Mode d'écoute : l'énergie mémorisée et relâchée lentement.", "Modo de escucha: la energía recordada y liberada despacio." }, {} },
@@ -715,8 +718,8 @@ inline const std::array<ControlText, 63>& controlTexts()
             "Cero: ruta anterior intacta. Súbalo para que la música venga del ecosistema: caza, huida, cortejo, territorio, la red de relaciones." },
           { "Events are born from what the organisms perceive: a hunter imitates what it heard of its prey, in a canon whose delay is the propagation through the water; the prey flees in diminution; rivals answer in hocket; allies sing together; courting pairs copy each other's song. Compatible relations sound consonant, incompatible ones rub; when a conflict dissolves, the music cadences.",
             "Os acontecimentos nascem do que os organismos percebem: o caçador imita o que ouviu da presa, num cânone cujo atraso é a propagação na água; a presa foge em diminuição; rivais respondem em hoquetus; aliados cantam juntos; o par em corte copia o canto um do outro. Relações compatíveis soam consonantes, incompatíveis friccionam; quando um conflito se dissolve, a música cadencia.",
-            "Les événements naissent de ce que perçoivent les organismes : le chasseur imite ce qu'il a entendu de sa proie, en un canon dont le retard est la propagation dans l'eau ; la proie fuit en diminution ; les rivaux répondent en hoquet ; les alliés chantent ensemble ; le couple en parade copie le chant de l'autre. Les relations compatibles sonnent consonantes, les incompatibles frottent ; quand un conflit se dissout, la musique cadence.",
-            "Los acontecimientos nacen de lo que perciben los organismos: el cazador imita lo que oyó de su presa, en un canon cuyo retardo es la propagación en el agua; la presa huye en disminución; los rivales responden en hoquetus; los aliados cantan juntos; la pareja en cortejo copia el canto del otro. Las relaciones compatibles suenan consonantes, las incompatibles friccionan; cuando un conflicto se disuelve, la música cadencia." } },
+            "Les événements naissent de ce que perçoivent les organismes : le chasseur imite ce qu'il a entendu de sa proie, en un canon dont le retard est la propagation dans l'eau ; la proie fuit en diminution ; les rivaux répondent en hoquet ; les alliés chantent ensemble ; le couple en parade copie le chant de l'autre. Les relations compatibles sonnent consonantes, les incompatibles frottent ; quand un conflit se dissout, la musique conclut sur une cadence.",
+            "Los acontecimientos nacen de lo que perciben los organismos: el cazador imita lo que oyó de su presa, en un canon cuyo retardo es la propagación en el agua; la presa huye en disminución; los rivales responden en hoquetus; los aliados cantan juntos; la pareja en cortejo copia el canto del otro. Las relaciones compatibles suenan consonantes, las incompatibles friccionan; cuando un conflicto se disuelve, la música cierra en una cadencia." } },
         { "musicReaction", { "REACTION", "REAÇÃO", "RÉACTION", "REACCIÓN" },
           { "How strongly the organisms react to what they see and hear through the water.", "O quanto os organismos reagem ao que veem e ouvem através da água.",
             "La force avec laquelle les organismes réagissent à ce qu'ils voient et entendent à travers l'eau.", "Cuánto reaccionan los organismos a lo que ven y oyen a través del agua." },
@@ -785,7 +788,7 @@ inline const std::array<ControlText, 63>& controlTexts()
           { "Twist of the feedback matrix.", "Torção da matriz de realimentação.", "Torsion de la matrice de rétroaction.", "Torsión de la matriz de realimentación." }, {} },
         { "creativeMaster", { "CREATIVE MASTER", "MASTER CRIATIVO", "MASTER CRÉATIF", "MASTER CREATIVO" },
           { "Macro of crossover, multiband dynamics, width and optical glue. Zero is an exact bypass.", "Macro de crossover, dinâmica multibanda, largura e cola óptica. Zero é bypass exato.",
-            "Macro de crossover, dynamique multibande, largeur et colle optique. Zéro est un bypass exact.", "Macro de crossover, dinámica multibanda, anchura y cola óptica. Cero es un bypass exacto." }, {} },
+            "Macro de crossover, dynamique multibande, largeur et colle optique. Zéro est un bypass exact.", "Macro de crossover, dinámica multibanda, anchura y pegamento óptico. Cero es un bypass exacto." }, {} },
         { "masterTrim", { "OUTPUT TRIM", "VOLUME DE SAÍDA", "NIVEAU DE SORTIE", "NIVEL DE SALIDA" },
           { "Final technical level: -18 dB to +6 dB; 0.75 is 0 dB.", "Nível técnico final: -18 dB a +6 dB; 0,75 corresponde a 0 dB.", "Niveau technique final : -18 dB à +6 dB ; 0,75 vaut 0 dB.", "Nivel técnico final: -18 dB a +6 dB; 0,75 equivale a 0 dB." }, {} },
         { "masterCeiling", { "CEILING", "TETO", "PLAFOND", "TECHO" },
@@ -802,8 +805,8 @@ inline const std::array<ControlText, 63>& controlTexts()
           { "LENS: how far the organisms out of focus fall back. Centre = as before.", "LUPA: quanto os organismos fora de foco recuam. Centro = como antes.", "LOUPE : combien les organismes flous reculent. Centre = comme avant.", "LUPA: cuánto retroceden los organismos desenfocados. Centro = como antes." }, {} },
         { "masterMultiband", { "MULTIBAND", "MULTIBANDA", "MULTIBANDE", "MULTIBANDA" },
           { "CREATIVE MASTER: the multiband dynamics, less or more than the ecology sets. Centre = the ecology alone.", "MASTER CRIATIVO: a dinâmica multibanda, menos ou mais do que a ecologia define. Centro = só a ecologia.", "MASTER CRÉATIF : la dynamique multibande, moins ou plus que l'écologie. Centre = l'écologie seule.", "MASTER CREATIVO: la dinámica multibanda, menos o más que la ecología. Centro = solo la ecología." }, {} },
-        { "masterGlue", { "GLUE", "COLA", "COLLE", "COLA" },
-          { "CREATIVE MASTER: the slow glue compressor, less or more. Centre = the ecology alone.", "MASTER CRIATIVO: a cola lenta, menos ou mais. Centro = só a ecologia.", "MASTER CRÉATIF : la colle lente, moins ou plus. Centre = l'écologie seule.", "MASTER CREATIVO: la cola lenta, menos o más. Centro = solo la ecología." }, {} },
+        { "masterGlue", { "GLUE", "COLA", "COLLE", "PEGAMENTO" },
+          { "CREATIVE MASTER: the slow glue compressor, less or more. Centre = the ecology alone.", "MASTER CRIATIVO: a cola lenta, menos ou mais. Centro = só a ecologia.", "MASTER CRÉATIF : la colle lente, moins ou plus. Centre = l'écologie seule.", "MASTER CREATIVO: el pegamento lento, menos o más. Centro = solo la ecología." }, {} },
         { "masterTilt", { "TILT", "INCLINAÇÃO", "INCLINAISON", "INCLINACIÓN" },
           { "CREATIVE MASTER: darker (left) or brighter (right) than the daylight sets. Centre = the ecology alone.", "MASTER CRIATIVO: mais escuro (esquerda) ou mais claro (direita) do que a luz do dia define. Centro = só a ecologia.", "MASTER CRÉATIF : plus sombre (gauche) ou plus clair (droite) que la lumière du jour. Centre = l'écologie seule.", "MASTER CREATIVO: más oscuro (izquierda) o más claro (derecha) que la luz del día. Centro = solo la ecología." }, {} },
         { "masterWidth", { "WIDTH", "LARGURA", "LARGEUR", "ANCHO" },

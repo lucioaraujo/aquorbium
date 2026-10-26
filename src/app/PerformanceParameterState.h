@@ -425,9 +425,7 @@ private:
     {
         if (property.isString())
         {
-            const auto text = property.toString().toStdString();
-            const auto [end, error] = std::from_chars(text.data(), text.data() + text.size(), value);
-            return error == std::errc {} && end == text.data() + text.size() && std::isfinite(value);
+            return text::readWholeDecimal(property.toString().toStdString(), value) && std::isfinite(value);
         }
         if (!property.isDouble() && !property.isInt() && !property.isInt64())
             return false;

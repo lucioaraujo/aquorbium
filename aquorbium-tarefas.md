@@ -40,7 +40,7 @@ As outras escutas da lista A seguem depois da v0.1.0, como melhoria.
 
 **Técnico, antes da tag** (padrão `RASGO_DOCUMENTATION/PADRAO_DISTRIBUICAO_MULTIPLATAFORMA.md`):
 - [ ] o repositório aninhado com histórico limpo; o monorepo ignora a pasta;
-- [ ] instalação e CPack dos três sistemas; CRT estática no Windows e a
+- [x] (escrito, falta o build e o teste locais) instalação e CPack dos três sistemas; CRT estática no Windows e a
       conferência por `dumpbin`; Universal 2 e selo ad-hoc no macOS; AppImage
       e `.tar.gz` no Linux, com testes em containers;
 - [ ] `std::from_chars` de ponto flutuante (3 usos) contra o libc++ da Apple:
@@ -54,9 +54,21 @@ As outras escutas da lista A seguem depois da v0.1.0, como melhoria.
 - [x] a interface completa nas quatro línguas: 625 textos, nenhum vazio;
       só 8 iguais ao inglês, todos de propósito (cognatos e notação técnica:
       "STRUCTURE ACTIVE", "chaos (Duffing)", os diagramas do FM);
-- [ ] a revisão nativa do FR e do ES (qualidade, não falta de texto);
-- [ ] o README público e o `INSTALL` nas quatro línguas, como nos outros
-      instrumentos.
+- [x] uma revisão do FR e do ES pelo Claude (2026-10-26), em 626 textos:
+      cerca de 30 correções, nenhuma de texto faltando:
+      - conflitos de nome no ES: GLUE "COLA" × o cartão COLA (agora
+        PEGAMENTO), SUPPORT e SUSTAIN ambos "SOSTÉN" (SUPPORT agora APOYO),
+        TILT e BRIGHTNESS ambos "BRILLO" (TILT agora PENDIENTE);
+      - termos: FR "RELÂCHE" → "RELÂCHEM." (como no limitador); ES "FOCO
+        ESCASO" → "FOCO DISPERSO"; "el vidrio se rompe" → "se agrieta"; "la
+        musique cadence" / "la música cadencia" → "conclut sur une cadence" /
+        "cierra en una cadencia"; "pasa-bajos" → "paso bajo";
+      - o ES sempre de "usted", como o resto do app (REC, LUPA, VARIA);
+      - o status "RT não" passou às quatro línguas;
+- [ ] a revisão de um falante nativo de FR e de ES continua desejável;
+- [x] o `INSTALL.md` nas quatro línguas (EN, PT, FR, ES; o ES de "usted");
+- [ ] o README público curto (precisa da decisão do autor: mover o diário
+      atual para `docs/` é uma reorganização).
 
 **Repositório** (2026-10-26): este diretório é agora o repositório próprio
 (`19140e2`, histórico limpo; o anterior fica no `rasgo-instruments` até

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Aquorbium
+GenericName=Audible biome
+Comment=An audible biome: five sound organisms living in a sphere of water (RASGO)
+Comment[pt]=Um bioma audível: cinco organismos sonoros vivendo numa esfera de água (RASGO)
+Comment[fr]=Un biome audible : cinq organismes sonores vivant dans une sphère d'eau (RASGO)
+Comment[es]=Un bioma audible: cinco organismos sonoros viviendo en una esfera de agua (RASGO)
+Exec=aquorbium
+Icon=aquorbium
+Terminal=false
+Categories=AudioVideo;Audio;Music;

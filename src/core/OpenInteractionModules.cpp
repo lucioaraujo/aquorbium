@@ -3,10 +3,10 @@
 
 #include "core/OpenInteractionModules.h"
 
+#include "core/DecimalText.h"
 #include "core/Numeric.h"
 
 #include <algorithm>
-#include <charconv>
 #include <cmath>
 #include <limits>
 
@@ -47,13 +47,12 @@ std::string_view identifier(std::string_view text,
 bool number(std::string_view text, std::size_t& position, float& value) noexcept
 {
     skipSpaces(text, position);
-    const auto* begin = text.data() + position;
-    const auto* end = text.data() + text.size();
-    const auto parsed = std::from_chars(begin, end, value);
-    if (parsed.ec != std::errc {} || parsed.ptr == begin
-        || !std::isfinite(value))
+    double parsed = 0.0;
+    const auto length = text::readDecimal(text.substr(position), parsed);
+    if (length == 0 || !std::isfinite(parsed) || std::abs(parsed) > static_cast<double>(std::numeric_limits<float>::max()))
         return false;
-    position = static_cast<std::size_t>(parsed.ptr - text.data());
+    value = static_cast<float>(parsed);
+    position += length;
     return true;
 }
 }

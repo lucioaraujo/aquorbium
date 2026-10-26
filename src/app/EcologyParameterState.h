@@ -4,9 +4,9 @@
 #pragma once
 
 #include "ParameterXml.h"
+#include "core/DecimalText.h"
 
 #include <array>
-#include <charconv>
 #include <cmath>
 #include <string>
 
@@ -81,10 +81,7 @@ public:
             if (property.isString())
             {
                 // JUCE turns XML attributes into strings on ValueTree::fromXml.
-                const auto text = property.toString().toStdString();
-                const auto [end, error] = std::from_chars(
-                    text.data(), text.data() + text.size(), value);
-                if (error != std::errc {} || end != text.data() + text.size())
+                if (!text::readWholeDecimal(property.toString().toStdString(), value))
                     return false;
             }
             else if (property.isDouble() || property.isInt() || property.isInt64())

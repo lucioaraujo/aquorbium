@@ -1,18 +1,49 @@
 cmake_minimum_required(VERSION 3.22)
-project(Aquorbium VERSION 0.0.1 LANGUAGES C CXX)
+
+# The RASGO multiplatform standard (RASGO_DOCUMENTATION/
+# PADRAO_DISTRIBUICAO_MULTIPLATAFORMA.md), before any target (2026-10-26, for
+# the first release, as in the Trioio):
+# - Windows: the static Visual C++ runtime (/MT), inside the .exe (the
+#   Antitotem, the Rasgo Modular and the Navalha 2 did not open without the
+#   Redistributable);
+# - macOS: a Universal 2 binary and an explicit deployment target, before
+#   project(): without it the binary inherits the CI runner's macOS and
+#   refuses older Macs. 10.15: what the Aquorbium's C++20 needs from Apple's
+#   libc++ (std::filesystem in the tests); the floating-point std::from_chars,
+#   which would need 13.3, was replaced by core/DecimalText.h.
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+if (APPLE)
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "minimum macOS" FORCE)
+    set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "Universal 2" FORCE)
+endif()
+project(Aquorbium VERSION 0.1.0 LANGUAGES C CXX)
+
+# MSVC: M_PI and the other <cmath> constants only with _USE_MATH_DEFINES, and
+# no min/max macros from <windows.h> (the Trioio's CI stopped on both)
+if (MSVC)
+    add_compile_definitions(_USE_MATH_DEFINES NOMINMAX)
+endif()
 
 option(AQUORBIUM_BUILD_APP "Build the standalone Aquorbium instrument" ON)
 option(AQUORBIUM_BUILD_TESTS "Build Aquorbium core tests" ON)
 option(AQUORBIUM_BUILD_TOOLS "Build Aquorbium offline validation tools" ON)
 set(AQUORBIUM_JUCE_PATH "" CACHE PATH "Path to a JUCE source checkout")
+# warnings stop the local build; the release CI turns this off, so a warning
+# from a compiler the Aquorbium has never met does not cost a whole run
+option(AQUORBIUM_WARNINGS_AS_ERRORS "Treat the Aquorbium's own warnings as errors" ON)
 
 function(aquorbium_configure_own_target target_name)
     set_target_properties(${target_name} PROPERTIES CXX_EXTENSIONS OFF)
     if (MSVC)
-        target_compile_options(${target_name} PRIVATE /W4 /permissive- /WX)
+        target_compile_options(${target_name} PRIVATE /W4 /permissive-)
+        if (AQUORBIUM_WARNINGS_AS_ERRORS)
+            target_compile_options(${target_name} PRIVATE /WX)
+        endif()
     else()
-        target_compile_options(${target_name} PRIVATE
-            -Wall -Wextra -Wpedantic -Werror)
+        target_compile_options(${target_name} PRIVATE -Wall -Wextra -Wpedantic)
+        if (AQUORBIUM_WARNINGS_AS_ERRORS)
+            target_compile_options(${target_name} PRIVATE -Werror)
+        endif()
     endif()
 endfunction()
 
@@ -153,6 +184,14 @@ if (AQUORBIUM_BUILD_TESTS)
     aquorbium_configure_own_target(aquorbium_opening_seed_tests)
     add_test(NAME aquorbium_opening_seed_tests COMMAND aquorbium_opening_seed_tests)
     set_tests_properties(aquorbium_opening_seed_tests PROPERTIES TIMEOUT 60)
+
+    # the decimal reader for macOS 10.15 (2026-10-26)
+    add_executable(aquorbium_decimal_text_tests tests/DecimalTextTests.cpp)
+    target_include_directories(aquorbium_decimal_text_tests PRIVATE src)
+    target_compile_features(aquorbium_decimal_text_tests PRIVATE cxx_std_20)
+    aquorbium_configure_own_target(aquorbium_decimal_text_tests)
+    add_test(NAME aquorbium_decimal_text_tests COMMAND aquorbium_decimal_text_tests)
+    set_tests_properties(aquorbium_decimal_text_tests PROPERTIES TIMEOUT 30)
 
     # the LUPA, MASTER CRIATIVO and CÉREBRO controls (2026-10-24)
     add_executable(aquorbium_card_controls_tests tests/CardControlsTests.cpp)
@@ -711,6 +750,70 @@ if (AQUORBIUM_BUILD_APP)
                 COMMAND aquorbium_ecology_parameter_tests --bypass-sweep)
             set_tests_properties(aquorbium_bypass_sweep_tests PROPERTIES TIMEOUT 600)  # ~2 min: ctest -LE slow skips it
         endif()
+
+        # The installation and the packages (the RASGO multiplatform
+        # standard; the Linux scripts copied from the Trioio,
+        # packaging/PROVENIENCIA.md). The Aquorbium carries everything inside
+        # its binary (BinaryData): no data directory travels with it.
+        set(AQUORBIUM_IDENTITY "${CMAKE_CURRENT_SOURCE_DIR}/assets/identity")
+        if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+            install(PROGRAMS "$<TARGET_FILE:AquorbiumApp>" DESTINATION bin RENAME aquorbium)
+            install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/packaging/linux/aquorbium.desktop" DESTINATION share/applications)
+            foreach(size 16 24 32 48 64 128 256 512)
+                install(FILES "${AQUORBIUM_IDENTITY}/aquorbium-${size}.png"
+                    DESTINATION share/icons/hicolor/${size}x${size}/apps RENAME aquorbium.png)
+            endforeach()
+        elseif (WIN32)
+            install(TARGETS AquorbiumApp RUNTIME DESTINATION .)
+        elseif (APPLE)
+            install(TARGETS AquorbiumApp BUNDLE DESTINATION .)
+        endif()
+
+        set(CPACK_PACKAGE_NAME "aquorbium")
+        set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
+        set(CPACK_PACKAGE_VENDOR "RASGO")
+        set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Aquorbium: an audible biome, five sound organisms in a sphere of water")
+        set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE-AGPL-3.0.txt")
+        if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+            # the .deb (the AppImage and the .tar.gz come from
+            # packaging/linux/empacotar.sh, from the same installed tree). The
+            # libraries JUCE opens at run time (dlopen) do not show in
+            # shlibdeps: declared by hand, with the distributions' names
+            set(CPACK_PACKAGING_INSTALL_PREFIX "/usr")
+            set(CPACK_GENERATOR "DEB")
+            set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Lúcio Araújo <rasgo.instruments@gmail.com>")
+            set(CPACK_DEBIAN_PACKAGE_SECTION "sound")
+            set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/lucioaraujo/aquorbium")
+            set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+            set(CPACK_DEBIAN_PACKAGE_DEPENDS "libx11-6, libxext6, libxss1, libglib2.0-0t64 | libglib2.0-0 | libgio-2.0-0")
+        elseif (WIN32)
+            # NSIS: the Start menu shortcut exists only with
+            # CPACK_PACKAGE_EXECUTABLES; the .exe at the root
+            # (EXECUTABLES_DIRECTORY "."), or the shortcut points at bin\ and
+            # does not open; folder and registry key without the version, so a
+            # new one removes the old (the Antitotem's, Navalha 2's and Rasgo
+            # Modular's lessons)
+            set(CPACK_GENERATOR "NSIS")
+            set(CPACK_NSIS_PACKAGE_NAME "Aquorbium")
+            set(CPACK_NSIS_DISPLAY_NAME "Aquorbium")
+            set(CPACK_NSIS_CONTACT "rasgo.instruments@gmail.com")
+            set(CPACK_NSIS_MODIFY_PATH OFF)
+            set(CPACK_PACKAGE_INSTALL_DIRECTORY "Aquorbium")
+            set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY "Aquorbium")
+            set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+            set(CPACK_NSIS_URL_INFO_ABOUT "https://github.com/lucioaraujo/aquorbium")
+            set(CPACK_PACKAGE_EXECUTABLES "Aquorbium" "Aquorbium")
+            set(CPACK_NSIS_EXECUTABLES_DIRECTORY ".")
+            set(CPACK_CREATE_DESKTOP_LINKS "Aquorbium")
+            set(CPACK_NSIS_MUI_ICON "${AQUORBIUM_IDENTITY}/aquorbium.ico")
+            set(CPACK_NSIS_MUI_UNIICON "${AQUORBIUM_IDENTITY}/aquorbium.ico")
+            set(CPACK_NSIS_INSTALLED_ICON_NAME "Aquorbium.exe")
+            set(CPACK_NSIS_MUI_FINISHPAGE_RUN "Aquorbium.exe")
+        elseif (APPLE)
+            set(CPACK_GENERATOR "DragNDrop")
+            set(CPACK_DMG_VOLUME_NAME "Aquorbium")
+        endif()
+        include(CPack)
     else()
         message(WARNING "Set AQUORBIUM_JUCE_PATH to build the standalone app")
     endif()
