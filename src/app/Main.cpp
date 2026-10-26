@@ -5395,7 +5395,7 @@ private:
              << "write_failed=" << (failed ? 1 : 0) << "\n"
              << "session_seed=" << static_cast<juce::int64>(sessionSeed)
              << "  (to replay the session: session.fixedSeed in the settings)\n"
-             << "session_world=" << (sessionGenesis ? sessionWorldText() : juce::String("classic"))
+             << "session_world=" << (sessionGenesis ? sessionWorldText(false) : juce::String("classic"))
              << "  (session.genesis; the world drawn from the seed)\n"
              << "\n[measurement: BS.1770 loudness and 4x true peak, on the whole take]\n"
              << "integrated_lufs=" << juce::String(measured.integratedLufs, 1) << "\n"
@@ -6063,17 +6063,25 @@ private:
     std::uint32_t sessionSeed = 42;  // set before the audio starts, then constant
     bool sessionGenesis = true;      // the session's world drawn from its seed
     // the world in a few words: tonic, mode, orbit
-    [[nodiscard]] juce::String sessionWorldText() const
+    // the session's world: in the interface's language for the status; with
+    // the core's fixed English names for a take's provenance (2026-10-26: the
+    // status said "funcional" in every language)
+    [[nodiscard]] juce::String sessionWorldText(bool localized = true) const
     {
+        using namespace aquorbium::app;
         static constexpr std::array<const char*, 12> names { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         const auto& world = engine.currentSessionWorld();
         const auto tonic = ((36 + world.rootOffset) % 12 + 12) % 12;
-        static constexpr std::array<const char*, 5> languages { "funcional", "modal", "brasileira", "impressionista", "cromática" };
-        const auto language = world.harmonic ? utf8(" · ") + utf8(languages[static_cast<std::size_t>(world.harmony.language)])
-                                                   + (world.harmony.polytonal ? utf8(" + politonal") : juce::String())
+        const auto index = static_cast<std::size_t>(world.harmony.language) % S::harmonyLanguages.size();
+        const auto languageName = localized ? T(S::harmonyLanguages[index])
+                                            : juce::String(aquorbium::harmonyLanguageNames[index]);
+        const auto language = world.harmonic ? utf8(" · ") + languageName
+                                                   + (world.harmony.polytonal ? " + " + (localized ? T(S::polytonal) : juce::String("polytonal"))
+                                                                              : juce::String())
                                              : juce::String();
         return juce::String(names[static_cast<std::size_t>(tonic)]) + " " + world.modeName + language
-            + utf8(" · órbita ") + juce::String(static_cast<int>(world.orbitSteps));
+            + utf8(" · ") + (localized ? T(S::orbit) : juce::String("orbit")) + " "
+            + juce::String(static_cast<int>(world.orbitSteps));
     }
     aquorbium::app::EcologyParameterState ecologyState;
     aquorbium::app::PerformancePresetBank presetBank;

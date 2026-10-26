@@ -18,6 +18,12 @@ depender da pasta irmã.
     aqui;
   - `aquorbium.desktop` e `README-tarball.txt` foram escritos para o
     Aquorbium, no formato dos do Trioio.
+  - `testar-arranque.sh`: o app roda na sua própria sessão (`setsid`) e o
+    fim do teste encerra o grupo inteiro. No AppImage com
+    `APPIMAGE_EXTRACT_AND_RUN`, o app é filho do processo lançado, e o
+    `kill` de um só deixava o app tocando depois do teste (achado em
+    2026-10-26; o defeito existe também nas cópias do Antitotem e do
+    Trioio).
 - **Ferramenta de terceiros no caminho do release:** o `linuxdeploy`, só na
   CI, fixado por versão e SHA-256 no `empacotar.sh`. Não fica no
   repositório.

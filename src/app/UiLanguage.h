@@ -391,6 +391,15 @@ inline const L4 recFailed { "REC FAILED - check the folder and the free space",
 // the status when the audio thread did not get real-time priority (2026-10-26;
 // it was "RT não" in every language)
 inline const L4 realtimeRefused { "RT no", "RT não", "RT non", "RT no" };
+// the session's world in the status (2026-10-26)
+inline const std::array<L4, 5> harmonyLanguages {{
+    { "functional", "funcional", "fonctionnel", "funcional" },
+    { "modal", "modal", "modal", "modal" },
+    { "Brazilian", "brasileira", "brésilien", "brasileño" },
+    { "impressionist", "impressionista", "impressionniste", "impresionista" },
+    { "chromatic", "cromática", "chromatique", "cromático" } }};
+inline const L4 polytonal { "polytonal", "politonal", "polytonal", "politonal" };
+inline const L4 orbit { "orbit", "órbita", "orbite", "órbita" };
 // the VARIA and the opening seed (2026-10-24)
 inline const L4 vary { "VARY", "VARIA", "VARIE", "VARÍA" };
 inline const L4 varyTip { "VARY: the controls move by themselves over the music's time, slowly and in relation, around where the seed or your hand left them - warmer and quicker at the climax of the piece, settling at rest. The output stage never moves. Move any control and it breathes around your value. Off: everything stays where it is. Each opening also proposes another biome - water, light, population, bodies, which modules wake; the state you left is kept as opening.previousStateV1 in the settings.",

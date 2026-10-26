@@ -78,8 +78,12 @@ porque foi feito nesta máquina; o da CI, no Ubuntu 22.04, pede 2.35.
       tocando (`74ae4ef`); o diário de desenvolvimento, que era o README,
       está em `docs/DESENVOLVIMENTO.md` (autorizado pelo autor em
       2026-10-26), com o guia rápido de "Como tocar";
-- [ ] o status mostra o nome da linguagem harmônica em português
-      ("funcional") com a interface em outra língua: traduzir.
+- [x] o status nomeia o mundo da sessão na língua da interface ("B dorian ·
+      modal · orbit 16"); o texto do REC guarda os nomes fixos em inglês, para
+      a proveniência.
+- [x] o `testar-arranque.sh` encerra o grupo de processos inteiro: o AppImage
+      deixava o app tocando depois do teste (o defeito vem do Antitotem e
+      está também no Trioio: `packaging/PROVENIENCIA.md`).
 
 **Repositório** (2026-10-26): este diretório é agora o repositório próprio
 (`19140e2`, histórico limpo; o anterior fica no `rasgo-instruments` até
