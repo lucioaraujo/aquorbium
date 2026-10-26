@@ -35,6 +35,15 @@ option(AQUORBIUM_WARNINGS_AS_ERRORS "Treat the Aquorbium's own warnings as error
 function(aquorbium_configure_own_target target_name)
     set_target_properties(${target_name} PROPERTIES CXX_EXTENSIONS OFF)
     if (MSVC)
+        # the tests hold a whole BiomaEngine (~870 KB) on the stack, some two
+        # of them: Linux and macOS give the main thread 8 MB, Windows 1 MB
+        # (the first CI, 2026-10-26: ten tests ended in a stack overflow).
+        # The app keeps its engine on the heap, and a render fits a 1 MB
+        # audio thread (measured on Linux with a 1 MB pthread stack).
+        get_target_property(target_type ${target_name} TYPE)
+        if (target_type STREQUAL "EXECUTABLE")
+            target_link_options(${target_name} PRIVATE /STACK:16777216)
+        endif()
         target_compile_options(${target_name} PRIVATE /W4 /permissive-)
         if (AQUORBIUM_WARNINGS_AS_ERRORS)
             target_compile_options(${target_name} PRIVATE /WX)

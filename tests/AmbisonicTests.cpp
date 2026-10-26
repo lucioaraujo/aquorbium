@@ -42,6 +42,11 @@ constexpr float pi = 3.14159265358979f;
 
 int main()
 {
+    // unbuffered, with a line per stage: on Windows this test ended with a
+    // fast-fail (0xc0000409) and no output (the first CI, 2026-10-26)
+    std::cout << std::unitbuf;
+    std::cerr << std::unitbuf;
+    std::cout << "stage: the panner\n";
     // ---- the panner: AmbiX axes and every direction recovered --------------
     {
         struct Case
@@ -110,6 +115,7 @@ int main()
               "stereo pair at +-30 degrees, W = 1/sqrt(2)");
     }
 
+    std::cout << "stage: the engine\n";
     // ---- the engine: the bus is silent to the output; W is the mix ---------
     {
         constexpr double rate = 48000.0;
@@ -181,6 +187,7 @@ int main()
         check(ratio > 0.5 && ratio < 1.5, "engine: directional energy is that of first-order sources");
     }
 
+    std::cout << "stage: the AmbiX file\n";
     // ---- the REC's AmbiX file: header and samples read back ----------------
     {
         const auto file = std::filesystem::temp_directory_path()
