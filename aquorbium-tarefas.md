@@ -40,15 +40,22 @@ As outras escutas da lista A seguem depois da v0.1.0, como melhoria.
 
 **Técnico, antes da tag** (padrão `RASGO_DOCUMENTATION/PADRAO_DISTRIBUICAO_MULTIPLATAFORMA.md`):
 - [ ] o repositório aninhado com histórico limpo; o monorepo ignora a pasta;
-- [x] (escrito, falta o build e o teste locais) instalação e CPack dos três sistemas; CRT estática no Windows e a
+- [x] instalação e CPack dos três sistemas (`1c4b7fb`); CRT estática no Windows e a
       conferência por `dumpbin`; Universal 2 e selo ad-hoc no macOS; AppImage
       e `.tar.gz` no Linux, com testes em containers;
-- [ ] `std::from_chars` de ponto flutuante (3 usos) contra o libc++ da Apple:
-      alvo mínimo ou troca;
-- [ ] o fluxo da CI (só nas tags `v*`), com JUCE fixado numa tag;
-- [ ] `CREDITS`, `THIRD_PARTY_NOTICES`, `INSTALL` (4 línguas) e um README
-      público curto; o diário atual vai para `docs/`;
+- [x] `std::from_chars` de ponto flutuante (3 usos) trocado por
+      `core/DecimalText.h` (macOS 10.15);
+- [x] o fluxo da CI (só nas tags `v*`, JUCE 9.0.3), escrito, **ainda não
+      rodado**: roda no primeiro push de uma tag (~160 min cobrados);
+- [x] `CREDITS_AND_SOURCES.md` (com o JUCE e o linuxdeploy), `INSTALL.md`
+      (4 línguas), `CHANGELOG.md`; o README público espera a decisão do autor;
 - [ ] a pendência do true peak normativo (README, estágio de saída).
+
+**Validado localmente (2026-10-26, `1c4b7fb`):** ctest 83/83; auditoria de
+layout nos quatro tamanhos e o editor de síntese em FR e ES; o `.deb`, o
+`.tar.gz` e o AppImage gerados e abertos (janela em 20 s, ~55 MB de
+memória); o `install.sh` instala e remove. O `.deb` local pede glibc 2.38
+porque foi feito nesta máquina; o da CI, no Ubuntu 22.04, pede 2.35.
 
 **Idiomas** (o autor, 2026-10-26: "há a questão dos idiomas também"):
 - [x] a interface completa nas quatro línguas: 625 textos, nenhum vazio;
