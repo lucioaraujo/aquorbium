@@ -57,6 +57,20 @@ layout nos quatro tamanhos e o editor de síntese em FR e ES; o `.deb`, o
 memória); o `install.sh` instala e remove. O `.deb` local pede glibc 2.38
 porque foi feito nesta máquina; o da CI, no Ubuntu 22.04, pede 2.35.
 
+**Site próprio** (o autor, 2026-10-26: "verificar também as páginas web;
+páginas do github (no mesmo padrão dos outros instrumentos)"; "na página
+web própria pode inovar"):
+- [x] `website/` no formato do Trioio (gerador, `seo.py`, faixa do portal,
+      fontes livres com a licença, contato sem `mailto`, 4 línguas) e o
+      `deploy-site.yml`; o próprio desta página: o **sonar vivo** e a
+      **semente desta visita** (`website/README.md`);
+- [x] conferido no Chrome sem janela, no desktop (1440) e no celular (390);
+- [ ] ligar o GitHub Pages no repositório (Settings → Pages → Source:
+      GitHub Actions) e o primeiro envio; até o lançamento, `noindex` e
+      "em preparação";
+- [ ] no lançamento: `PUBLICADO = True` no gerador, e o card no portal RASGO
+      (`RASGO_WEBSITE/`; o envio do portal é do autor).
+
 **Idiomas** (o autor, 2026-10-26: "há a questão dos idiomas também"):
 - [x] a interface completa nas quatro línguas: 625 textos, nenhum vazio;
       só 8 iguais ao inglês, todos de propósito (cognatos e notação técnica:

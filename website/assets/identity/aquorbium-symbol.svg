@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Aquorbium — símbolo sonar">
+  <defs><clipPath id="screen"><circle cx="256" cy="256" r="190"/></clipPath></defs>
+  <circle cx="256" cy="256" r="207" fill="#17292f" stroke="#65737a" stroke-width="5"/>
+  <circle cx="256" cy="256" r="198" fill="#0a171d" stroke="#50ded5" stroke-opacity=".52" stroke-width="3"/>
+  <circle cx="256" cy="256" r="190" fill="#0b2128" stroke="#50ded5" stroke-width="5"/>
+  <g clip-path="url(#screen)">
+    <g fill="none" stroke="#50ded5" stroke-opacity=".25" stroke-width="2">
+      <circle cx="256" cy="256" r="142"/><circle cx="256" cy="256" r="94"/><circle cx="256" cy="256" r="47"/>
+      <path d="M66 256h380M256 66v380M122 122l268 268M390 122 122 390"/>
+    </g>
+    <path d="M256 256 420.5 161 A190 190 0 0 1 445 239 Z" fill="#50ded5" fill-opacity=".42"/>
+    <path d="M256 256 414 165" stroke="#50ded5" stroke-opacity=".88" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="333" cy="187" r="9" fill="#f3b75b"/>
+    <circle cx="179" cy="225" r="8" fill="#ef715f"/>
+    <circle cx="303" cy="335" r="8" fill="#9e84f4"/>
+    <circle cx="205" cy="315" r="9" fill="#77d28e"/>
+    <circle cx="256" cy="256" r="7" fill="#c3ceca"/>
+  </g>
+  <g stroke="#8c9b9d" stroke-width="3" stroke-linecap="square" opacity=".82">
+    <path d="M256 53v17M256 442v17M53 256h17M442 256h17"/>
+    <path d="m112 112 12 12m264 264 12 12M400 112l-12 12M124 388l-12 12"/>
+  </g>
+  <path d="M250 48h12v22h-12z" fill="#c3ceca"/>
+  <circle cx="256" cy="256" r="4" fill="#c3ceca"/>
+</svg>

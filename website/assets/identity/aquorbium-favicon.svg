@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Aquorbium">
+  <circle cx="32" cy="32" r="30" fill="#17292f" stroke="#65737a" stroke-width="1.4"/>
+  <circle cx="32" cy="32" r="27" fill="#0b2128" stroke="#50ded5" stroke-width="1.6"/>
+  <circle cx="32" cy="32" r="19" fill="none" stroke="#50ded5" stroke-opacity=".32" stroke-width=".8"/>
+  <circle cx="32" cy="32" r="10" fill="none" stroke="#50ded5" stroke-opacity=".32" stroke-width=".8"/>
+  <path d="M32 32 54 19 A25.5 25.5 0 0 1 57 30Z" fill="#50ded5" fill-opacity=".42"/>
+  <path d="M32 32 53 20" stroke="#50ded5" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="42" cy="23" r="1.8" fill="#f3b75b"/>
+  <circle cx="21" cy="28" r="1.7" fill="#ef715f"/>
+  <circle cx="38" cy="43" r="1.7" fill="#9e84f4"/>
+  <circle cx="24" cy="40" r="1.8" fill="#77d28e"/>
+  <circle cx="32" cy="32" r="1.8" fill="#c3ceca"/>
+  <path d="M32 3v4" stroke="#c3ceca" stroke-width="2"/>
+</svg>

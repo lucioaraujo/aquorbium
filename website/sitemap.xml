@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://lucioaraujo.github.io/aquorbium/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucioaraujo.github.io/aquorbium/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lucioaraujo.github.io/aquorbium/en.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lucioaraujo.github.io/aquorbium/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lucioaraujo.github.io/aquorbium/es.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucioaraujo.github.io/aquorbium/"/>
+  </url>
+  <url>
+    <loc>https://lucioaraujo.github.io/aquorbium/en.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucioaraujo.github.io/aquorbium/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lucioaraujo.github.io/aquorbium/en.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lucioaraujo.github.io/aquorbium/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lucioaraujo.github.io/aquorbium/es.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucioaraujo.github.io/aquorbium/"/>
+  </url>
+  <url>
+    <loc>https://lucioaraujo.github.io/aquorbium/fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucioaraujo.github.io/aquorbium/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lucioaraujo.github.io/aquorbium/en.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lucioaraujo.github.io/aquorbium/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lucioaraujo.github.io/aquorbium/es.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucioaraujo.github.io/aquorbium/"/>
+  </url>
+  <url>
+    <loc>https://lucioaraujo.github.io/aquorbium/es.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://lucioaraujo.github.io/aquorbium/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lucioaraujo.github.io/aquorbium/en.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lucioaraujo.github.io/aquorbium/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lucioaraujo.github.io/aquorbium/es.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucioaraujo.github.io/aquorbium/"/>
+  </url>
+</urlset>
