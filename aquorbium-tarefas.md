@@ -72,6 +72,15 @@ porque foi feito nesta máquina; o da CI, no Ubuntu 22.04, pede 2.35.
         "cierra en una cadencia"; "pasa-bajos" → "paso bajo";
       - o ES sempre de "usted", como o resto do app (REC, LUPA, VARIA);
       - o status "RT não" passou às quatro línguas;
+- [x] a revisão do PT (~27 correções: "acasalamento" → "corte", "a música
+      cadencia" → "chega a uma cadência", STORE "GRAVAR" → "SALVAR" para não
+      confundir com o REC, TILT "BRILHO" → "INCLINAÇÃO", "reflexos" →
+      "reflexões", "pastagem" → "pastejo") e do EN (gramática, "CENTER" →
+      "CENTRE" no inglês britânico do resto) (2026-10-26);
+- [x] o tutorial ganhou o capítulo 2, "Cada abertura, uma peça nova" (o
+      mundo da sessão, a harmonia, o bioma, o VARIA), nas quatro línguas; a
+      Lição 1 não supõe mais SÍNTESE em 0; o status nomeia os 10 modos na
+      língua da interface; o sumário cabe com 18 capítulos em 960x600;
 - [ ] a revisão de um falante nativo de FR e de ES continua desejável;
 - [x] o `INSTALL.md` nas quatro línguas (EN, PT, FR, ES; o ES de "usted");
 - [x] o README público curto nas quatro línguas, com uma imagem do app

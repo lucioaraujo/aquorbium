@@ -169,7 +169,7 @@ inline const std::array<std::array<L4, 3>, 14> macroNames {{
     {{ { "-", "-", "-", "-" }, { "-", "-", "-", "-" }, { "-", "-", "-", "-" } }},
     {{ { "RATIO", "RAZÃO", "RAPPORT", "RAZÓN" }, { "INDEX", "ÍNDICE", "INDICE", "ÍNDICE" }, { "FEEDBACK", "REALIM.", "RÉTROACT.", "REALIM." } }},
     {{ { "POSITION", "POSIÇÃO", "POSITION", "POSICIÓN" }, { "WARP", "WARP", "WARP", "WARP" }, { "DRIFT", "DERIVA", "DÉRIVE", "DERIVA" } }},
-    {{ { "TILT", "BRILHO", "PENTE", "PENDIENTE" }, { "ODD/EVEN", "ÍMPAR/PAR", "IMPAIR/PAIR", "IMPAR/PAR" }, { "STRETCH", "ESTICAR", "ÉTIREMENT", "ESTIRAR" } }},
+    {{ { "TILT", "INCLINAÇÃO", "PENTE", "PENDIENTE" }, { "ODD/EVEN", "ÍMPAR/PAR", "IMPAIR/PAIR", "IMPAR/PAR" }, { "STRETCH", "ESTICAR", "ÉTIREMENT", "ESTIRAR" } }},
     {{ { "FORMANT", "FORMANTE", "FORMANT", "FORMANTE" }, { "PULSARET", "PULSARET", "PULSARET", "PULSARET" }, { "WINDOW", "JANELA", "FENÊTRE", "VENTANA" } }},
     {{ { "DAMPING", "AMORTEC.", "AMORTISS.", "AMORTIG." }, { "POSITION", "POSIÇÃO", "POSITION", "POSICIÓN" }, { "SUSTAIN", "SUSTENTO", "MAINTIEN", "SOSTÉN" } }},
     {{ { "STRUCTURE", "ESTRUTURA", "STRUCTURE", "ESTRUCTURA" }, { "BRIGHTNESS", "BRILHO", "BRILLANCE", "BRILLO" }, { "DAMPING", "AMORTEC.", "AMORTISS.", "AMORTIG." } }},
@@ -298,7 +298,7 @@ inline const std::array<L4, 14> sourceTips {{
       "Table d'ondes : POSITION parcourt 16 trames (dent de scie > carré > formant > sinus), WARP courbe la phase, DÉRIVE laisse la position errer d'elle-même.",
       "Tabla de ondas: POSICIÓN recorre 16 cuadros (diente de sierra > cuadrada > formante > seno), WARP dobla la fase, DERIVA deja que la posición vague sola." },
     { "Additive: up to 64 partials. TILT from dark to bright, ODD/EVEN from only even to only odd (a clarinet-like hollowness), STRETCH makes the partials inharmonic, towards a bell.",
-      "Aditiva: até 64 parciais. BRILHO do escuro ao claro, ÍMPAR/PAR de só pares a só ímpares (um oco de clarinete), ESTICAR torna as parciais inarmônicas, rumo a um sino.",
+      "Aditiva: até 64 parciais. INCLINAÇÃO do escuro ao claro, ÍMPAR/PAR de só pares a só ímpares (um oco de clarinete), ESTICAR torna as parciais inarmônicas, rumo a um sino.",
       "Additive : jusqu'à 64 partiels. PENTE du sombre au brillant, IMPAIR/PAIR de seulement pairs à seulement impairs (un creux de clarinette), ÉTIREMENT rend les partiels inharmoniques, vers une cloche.",
       "Aditiva: hasta 64 parciales. PENDIENTE de oscuro a brillante, IMPAR/PAR de solo pares a solo impares (un hueco de clarinete), ESTIRAR vuelve inarmónicos los parciales, hacia una campana." },
     { "Pulsar (Curtis Roads): a train of short grains at the note's rate. FORMANT sets the grain's own frequency (0.1x to 8x the note), PULSARET its shape, WINDOW its envelope.",
@@ -326,12 +326,12 @@ inline const std::array<L4, 14> sourceTips {{
       "Chaos : un oscillateur de Duffing forcé (une bille entre deux vallées, poussée à la fréquence de la note). FORÇAGE va d'un petit son dans une seule vallée, par le chaos, à une grande orbite à travers les deux ; AMORTISS. déplace ces frontières ; COULEUR va de la position à la vitesse, plus brillante. Le même volume dans tous les régimes.",
       "Caos: un oscilador de Duffing forzado (una bola entre dos valles, empujada a la frecuencia de la nota). FUERZA va de un tono pequeño en un solo valle, por el caos, a una órbita grande por los dos; AMORTIG. desplaza esas fronteras; COLOR va de la posición a la velocidad, más brillante. El mismo volumen en todos los regímenes." },
     { "Feedback: a loop with no input that sings by itself, like a no-input mixer - a delay tuned to the note, a low-pass and a soft clip. GAIN from barely singing to saturated; DETUNE adds a second tap off the period, and the loop jumps to other modes; COLOUR opens the low-pass.",
-      "Realimentação: um laço sem entrada que canta sozinho, como uma mesa sem entrada - um atraso afinado na nota, um passa-baixa e uma saturação suave. GANHO vai de mal cantando a saturado; DESAFINAR soma um segundo tap fora do período, e o laço salta para outros modos; COR abre o passa-baixa.",
+      "Realimentação: um laço sem entrada que canta sozinho, como uma mesa sem entrada - um atraso afinado na nota, um passa-baixas e uma saturação suave. GANHO vai de mal cantando a saturado; DESAFINAR soma um segundo tap fora do período, e o laço salta para outros modos; COR abre o passa-baixas.",
       "Rétroaction : une boucle sans entrée qui chante d'elle-même, comme une console sans entrée - un retard accordé sur la note, un passe-bas et une saturation douce. GAIN va d'à peine chantant à saturé ; DÉSACCORD ajoute une seconde prise hors période, et la boucle saute vers d'autres modes ; COULEUR ouvre le passe-bas.",
       "Realimentación: un lazo sin entrada que canta solo, como una mesa sin entrada - un retardo afinado en la nota, un paso bajo y una saturación suave. GANANCIA va de apenas cantando a saturado; DESAFINAR suma una segunda toma fuera del período, y el lazo salta a otros modos; COLOR abre el paso bajo." } }};
 // the sections
 inline const L4 mixSectionTip { "RING multiplies A by B (metallic sidebands). FM B>A makes B modulate A's pitch - it acts on the oscillating sources only: STRING, MATTER and BODY keep their tuning (a resonator retuned every sample is unstable). DRIFT lets the tuning breathe; ACCENT is how much the note's accent sets the level.",
-                                "RING multiplica A por B (bandas laterais metálicas). FM B>A faz B modular a altura de A - age só nas fontes osciladoras: CORDA, MATÉRIA e CORPO mantêm a afinação (um ressonador re-afinado a cada amostra é instável). DERIVA deixa a afinação respirar; ACENTO é quanto o acento da nota define o nível.",
+                                "RING multiplica A por B (bandas laterais metálicas). FM B>A faz B modular a altura de A - age só nas fontes osciladoras: CORDA, MATÉRIA e CORPO mantêm a afinação (um ressonador reafinado a cada amostra é instável). DERIVA deixa a afinação respirar; ACENTO é quanto o acento da nota define o nível.",
                                 "RING multiplie A par B (bandes latérales métalliques). FM B>A fait moduler la hauteur de A par B - seulement sur les sources oscillantes : CORDE, MATIÈRE et CORPS gardent leur accord (un résonateur réaccordé à chaque échantillon est instable). DÉRIVE fait respirer l'accord ; ACCENT règle combien l'accent de la note fixe le niveau.",
                                 "RING multiplica A por B (bandas laterales metálicas). FM B>A hace que B module la altura de A - solo en las fuentes osciladoras: CUERDA, MATERIA y CUERPO mantienen su afinación (un resonador reafinado en cada muestra es inestable). DERIVA hace respirar la afinación; ACENTO es cuánto el acento de la nota fija el nivel." };
 inline const L4 filterTip { "A state-variable filter (Simper): low-pass, band-pass, high-pass or notch. KEY makes the cutoff follow the note, ENV opens it with the mod envelope (in octaves, + or -), DRIVE saturates before it. FORMANT: five vowel formants (A E I O U, Fant's sung-vowel table); VOWEL walks them, CUTOFF becomes TRACT, the size of the vocal tract (1000 Hz = a bass voice), and RESO narrows them.",
@@ -398,6 +398,19 @@ inline const std::array<L4, 5> harmonyLanguages {{
     { "Brazilian", "brasileira", "brésilien", "brasileño" },
     { "impressionist", "impressionista", "impressionniste", "impresionista" },
     { "chromatic", "cromática", "chromatique", "cromático" } }};
+// the session's modes (SessionGenesis.h), by their core name
+struct ModeName { const char* core; L4 name; };
+inline const std::array<ModeName, 10> sessionModes {{
+    { "dorian", { "dorian", "dórico", "dorien", "dórico" } },
+    { "aeolian", { "aeolian", "eólio", "éolien", "eólico" } },
+    { "mixolydian", { "mixolydian", "mixolídio", "mixolydien", "mixolidio" } },
+    { "lydian", { "lydian", "lídio", "lydien", "lidio" } },
+    { "ionian", { "ionian", "jônio", "ionien", "jónico" } },
+    { "phrygian", { "phrygian", "frígio", "phrygien", "frigio" } },
+    { "minor pentatonic", { "minor pentatonic", "pentatônica menor", "pentatonique mineure", "pentatónica menor" } },
+    { "major pentatonic", { "major pentatonic", "pentatônica maior", "pentatonique majeure", "pentatónica mayor" } },
+    { "harmonic minor", { "harmonic minor", "menor harmônica", "mineur harmonique", "menor armónica" } },
+    { "hirajoshi", { "hirajoshi", "hirajoshi", "hirajoshi", "hirajoshi" } } }};
 inline const L4 polytonal { "polytonal", "politonal", "polytonal", "politonal" };
 inline const L4 orbit { "orbit", "órbita", "orbite", "órbita" };
 // the VARIA and the opening seed (2026-10-24)
@@ -441,7 +454,7 @@ inline const L4 sceneEmpty { "Empty scene", "Cena vazia", "Scène vide", "Escena
 inline const L4 sceneRecalled { "Scene recalled", "Cena recuperada", "Scène rappelée", "Escena recuperada" };
 inline const L4 sceneDefaults { "Initial values; scenes preserved", "Valores iniciais; cenas preservadas",
                                 "Valeurs initiales ; scènes préservées", "Valores iniciales; escenas conservadas" };
-inline const L4 store { "STORE", "GRAVAR", "ENREGISTRER", "GUARDAR" };
+inline const L4 store { "STORE", "SALVAR", "ENREGISTRER", "GUARDAR" };
 inline const L4 recall { "RECALL", "RECUPERAR", "RAPPELER", "RECUPERAR" };
 inline const L4 initial { "INITIAL", "INICIAL", "INITIAL", "INICIAL" };
 inline const L4 importScene { "IMPORT SCENE", "IMPORTAR CENA", "IMPORTER SCÈNE", "IMPORTAR ESCENA" };
@@ -449,7 +462,7 @@ inline const L4 exportScene { "EXPORT SCENE", "EXPORTAR CENA", "EXPORTER SCÈNE"
 inline const L4 rename { "RENAME", "RENOMEAR", "RENOMMER", "RENOMBRAR" };
 inline const L4 undo { "UNDO", "DESFAZER", "ANNULER", "DESHACER" };
 inline const L4 nameTip { "Up to 32 characters; Enter or RENAME confirms. STORE includes the typed name.",
-                          "Até 32 caracteres; Enter ou RENOMEAR confirma. GRAVAR inclui o nome digitado.",
+                          "Até 32 caracteres; Enter ou RENOMEAR confirma. SALVAR inclui o nome digitado.",
                           "Jusqu'à 32 caractères ; Entrée ou RENOMMER confirme. ENREGISTRER inclut le nom saisi.",
                           "Hasta 32 caracteres; Enter o RENOMBRAR confirma. GUARDAR incluye el nombre escrito." };
 
@@ -528,7 +541,7 @@ inline const L4 mixTip { "MIX: how much of the second body sounds together with 
                          "MÉLANGE : quelle part du second corps sonne avec le corps natif.",
                          "MEZCLA: cuánto del segundo cuerpo suena junto al cuerpo nativo." };
 inline const L4 timbreEcologyTip { "ECOLOGICAL TIMBRE: how much the ecosystem's life transforms the matter and presence of the bodies (water, hunt, flight, courtship, vigour, health).",
-                                   "TIMBRE ECOLÓGICO: o quanto a vida do ecossistema transforma a matéria e a presença dos corpos (a água, a caça, a fuga, o acasalamento, o vigor, a saúde).",
+                                   "TIMBRE ECOLÓGICO: o quanto a vida do ecossistema transforma a matéria e a presença dos corpos (a água, a caça, a fuga, a corte, o vigor, a saúde).",
                                    "TIMBRE ÉCOLOGIQUE : combien la vie de l'écosystème transforme la matière et la présence des corps (eau, chasse, fuite, parade, vigueur, santé).",
                                    "TIMBRE ECOLÓGICO: cuánto la vida del ecosistema transforma la materia y la presencia de los cuerpos (agua, caza, huida, cortejo, vigor, salud)." };
 inline const std::array<L4, 12> bodies {{
@@ -607,7 +620,7 @@ inline const std::array<L4, 6> relations {{
     { "territory", "território", "territoire", "territorio" }
 }};
 inline const std::array<L4, 22> acts {{
-    { "grazing", "pastagem", "pâture", "pastoreo" },
+    { "grazing", "pastejo", "pâture", "pastoreo" },
     { "hunt", "caça", "chasse", "caza" },
     { "terminal buzz", "buzz terminal", "buzz terminal", "zumbido terminal" },
     { "capture", "captura", "capture", "captura" },
@@ -620,7 +633,7 @@ inline const std::array<L4, 22> acts {{
     { "modulation", "modulação", "modulation", "modulación" },
     { "cadence", "cadência", "cadence", "cadencia" },
     { "change of state", "mudança de estado", "changement d'état", "cambio de estado" },
-    { "the glass cracks", "ruptura do vidro", "le verre se fend", "el vidrio se agrieta" },
+    { "the glass cracks", "o vidro trinca", "le verre se fend", "el vidrio se agrieta" },
     { "bubbles", "bolhas", "bulles", "burbujas" },
     { "departure", "partida", "départ", "partida" },
     { "bubble net", "rede de bolhas", "filet de bulles", "red de burbujas" },
@@ -726,7 +739,7 @@ inline const std::array<ControlText, 63>& controlTexts()
             "Zéro : route précédente intacte. Montez pour que la musique vienne de l'écosystème : chasse, fuite, parade, territoire, le réseau de relations.",
             "Cero: ruta anterior intacta. Súbalo para que la música venga del ecosistema: caza, huida, cortejo, territorio, la red de relaciones." },
           { "Events are born from what the organisms perceive: a hunter imitates what it heard of its prey, in a canon whose delay is the propagation through the water; the prey flees in diminution; rivals answer in hocket; allies sing together; courting pairs copy each other's song. Compatible relations sound consonant, incompatible ones rub; when a conflict dissolves, the music cadences.",
-            "Os acontecimentos nascem do que os organismos percebem: o caçador imita o que ouviu da presa, num cânone cujo atraso é a propagação na água; a presa foge em diminuição; rivais respondem em hoquetus; aliados cantam juntos; o par em corte copia o canto um do outro. Relações compatíveis soam consonantes, incompatíveis friccionam; quando um conflito se dissolve, a música cadencia.",
+            "Os acontecimentos nascem do que os organismos percebem: o caçador imita o que ouviu da presa, num cânone cujo atraso é a propagação na água; a presa foge em diminuição; rivais respondem em hoquetus; aliados cantam juntos; o par em corte copia o canto um do outro. Relações compatíveis soam consonantes, incompatíveis friccionam; quando um conflito se dissolve, a música chega a uma cadência.",
             "Les événements naissent de ce que perçoivent les organismes : le chasseur imite ce qu'il a entendu de sa proie, en un canon dont le retard est la propagation dans l'eau ; la proie fuit en diminution ; les rivaux répondent en hoquet ; les alliés chantent ensemble ; le couple en parade copie le chant de l'autre. Les relations compatibles sonnent consonantes, les incompatibles frottent ; quand un conflit se dissout, la musique conclut sur une cadence.",
             "Los acontecimientos nacen de lo que perciben los organismos: el cazador imita lo que oyó de su presa, en un canon cuyo retardo es la propagación en el agua; la presa huye en disminución; los rivales responden en hoquetus; los aliados cantan juntos; la pareja en cortejo copia el canto del otro. Las relaciones compatibles suenan consonantes, las incompatibles friccionan; cuando un conflicto se disuelve, la música cierra en una cadencia." } },
         { "musicReaction", { "REACTION", "REAÇÃO", "RÉACTION", "REACCIÓN" },
@@ -756,7 +769,7 @@ inline const std::array<ControlText, 63>& controlTexts()
           { "Zero: autonomous Striker. Raise to enable MATTER, POP and SCATTER; they answer at the next impacts.", "Zero: Striker autônomo. Aumente para ativar MATÉRIA, POP e DISPERSÃO; respondem nos próximos impactos.",
             "Zéro : Striker autonome. Montez pour activer MATIÈRE, POP et DISPERSION ; ils répondent aux prochains impacts.", "Cero: Striker autónomo. Súbalo para activar MATERIA, POP y DISPERSIÓN; responden en los próximos impactos." }, {} },
         { "strikerMatter", { "MATTER", "MATÉRIA", "MATIÈRE", "MATERIA" },
-          { "Short dust to resonant metal.", "Poeira curta a metal ressonante.", "De la poussière brève au métal résonant.", "De polvo breve a metal resonante." }, {} },
+          { "From short dust to resonant metal.", "Da poeira breve ao metal ressonante.", "De la poussière brève au métal résonant.", "De polvo breve a metal resonante." }, {} },
         { "strikerPopulation", { "POP", "POP", "POP", "POP" },
           { "Number of particles per impact.", "Quantidade de partículas por impacto.", "Nombre de particules par impact.", "Cantidad de partículas por impacto." }, {} },
         { "strikerScatter", { "SCATTER", "DISPERSÃO", "DISPERSION", "DISPERSIÓN" },
@@ -767,22 +780,22 @@ inline const std::array<ControlText, 63>& controlTexts()
           { "Zero: autonomous Space. Raise to enable SIZE, SPREAD, TONE and MEMORY. RETURN works independently.", "Zero: Espaço autônomo. Aumente para ativar TAMANHO, ABERTURA, TOM e MEMÓRIA. RETORNO funciona independentemente.",
             "Zéro : Espace autonome. Montez pour activer TAILLE, OUVERTURE, TON et MÉMOIRE. RETOUR fonctionne indépendamment.", "Cero: Espacio autónomo. Súbalo para activar TAMAÑO, APERTURA, TONO y MEMORIA. RETORNO funciona por separado." }, {} },
         { "spaceSize", { "SIZE", "TAMANHO", "TAILLE", "TAMAÑO" },
-          { "Time scale of the reflections.", "Escala temporal dos reflexos.", "Échelle temporelle des réflexions.", "Escala temporal de los reflejos." }, {} },
+          { "Time scale of the reflections.", "Escala temporal das reflexões.", "Échelle temporelle des réflexions.", "Escala temporal de los reflejos." }, {} },
         { "spaceSpread", { "SPREAD", "ABERTURA", "OUVERTURE", "APERTURA" },
           { "Lateral opening of the reflections.", "Abertura lateral das reflexões.", "Ouverture latérale des réflexions.", "Apertura lateral de los reflejos." }, {} },
         { "spaceTone", { "TONE", "TOM", "TON", "TONO" },
-          { "Spectral opening of the reflections.", "Abertura espectral dos reflexos.", "Ouverture spectrale des réflexions.", "Apertura espectral de los reflejos." }, {} },
+          { "Spectral opening of the reflections.", "Abertura espectral das reflexões.", "Ouverture spectrale des réflexions.", "Apertura espectral de los reflejos." }, {} },
         { "spaceMemory", { "MEMORY", "MEMÓRIA", "MÉMOIRE", "MEMORIA" },
           { "Persistence of the reflection field.", "Persistência do campo de reflexões.", "Persistance du champ de réflexions.", "Persistencia del campo de reflejos." }, {} },
         { "environmentInfluence", { "ENV MIX", "AMBIENTE", "ENVIRONNEMENT", "AMBIENTE" },
           { "Zero: transparent bypass. Raise to enable filter and atmosphere.", "Zero: bypass transparente. Aumente para ativar filtro e atmosfera.",
             "Zéro : bypass transparent. Montez pour activer filtre et atmosphère.", "Cero: bypass transparente. Súbalo para activar filtro y atmósfera." }, {} },
         { "environmentFilterMix", { "FILTER", "FILTRO", "FILTRE", "FILTRO" },
-          { "Dry mix of the eight-band spectral signature.", "Mistura seca para a assinatura espectral de oito bandas.", "Mélange sec de la signature spectrale à huit bandes.", "Mezcla seca de la firma espectral de ocho bandas." }, {} },
-        { "environmentCentre", { "CENTER", "CENTRO", "CENTRE", "CENTRO" },
+          { "Dry mix of the eight-band spectral signature.", "Mistura seca da assinatura espectral de oito bandas.", "Mélange sec de la signature spectrale à huit bandes.", "Mezcla seca de la firma espectral de ocho bandas." }, {} },
+        { "environmentCentre", { "CENTRE", "CENTRO", "CENTRE", "CENTRO" },
           { "Logarithmic centre of the spectral bank.", "Centro logarítmico do banco espectral.", "Centre logarithmique du banc spectral.", "Centro logarítmico del banco espectral." }, {} },
         { "environmentSpan", { "SPAN", "EXTENSÃO", "ÉTENDUE", "EXTENSIÓN" },
-          { "Spread in octaves of the eight bands.", "Dispersão em oitavas das oito bandas.", "Étendue en octaves des huit bandes.", "Extensión en octavas de las ocho bandas." }, {} },
+          { "Spread in octaves of the eight bands.", "Extensão em oitavas das oito bandas.", "Étendue en octaves des huit bandes.", "Extensión en octavas de las ocho bandas." }, {} },
         { "environmentResonance", { "RESONANCE", "RESSONÂNCIA", "RÉSONANCE", "RESONANCIA" },
           { "Selectivity of the spectral bands.", "Seletividade das bandas espectrais.", "Sélectivité des bandes spectrales.", "Selectividad de las bandas espectrales." }, {} },
         { "environmentAmbience", { "AMBIENCE", "AMBIÊNCIA", "AMBIANCE", "AMBIENCIA" },
@@ -854,7 +867,7 @@ inline const std::array<L4, 16>& moduleDetails()
         { "Granular, isolator, recent resynthesis and lock-in focus", "Granular, isolador, resíntese recente e foco lock-in", "Granulaire, isolateur, resynthèse récente et focus lock-in", "Granular, aislador, resíntesis reciente y foco lock-in" },
         { "Percussion, stochastic mask and HarmonicRippleVoice", "Percussão, máscara estocástica e HarmonicRippleVoice", "Percussion, masque stochastique et HarmonicRippleVoice", "Percusión, máscara estocástica y HarmonicRippleVoice" },
         { "Fractal, vector, X/Y polygon and FrequencyShifter", "Fractal, vetor, polígono X/Y e FrequencyShifter", "Fractale, vecteur, polygone X/Y et FrequencyShifter", "Fractal, vector, polígono X/Y y FrequencyShifter" },
-        { "Lorenz, drifts and bounded self-feedback", "Lorenz, derivas e auto-feedback limitado", "Lorenz, dérives et auto-rétroaction bornée", "Lorenz, derivas y autorrealimentación acotada" },
+        { "Lorenz, drifts and bounded self-feedback", "Lorenz, derivas e autorrealimentação limitada", "Lorenz, dérives et auto-rétroaction bornée", "Lorenz, derivas y autorrealimentación acotada" },
         { "Motion, quadrature, inertia and light binaural", "Movimento, quadratura, inércia e binaural leve", "Mouvement, quadrature, inertie et binaural léger", "Movimiento, cuadratura, inercia y binaural ligero" },
         { "MotionGestureRecorder and bank of motion waves", "MotionGestureRecorder e banco de ondas de movimento", "MotionGestureRecorder et banc d'ondes de mouvement", "MotionGestureRecorder y banco de ondas de movimiento" },
         { "Clock, events, resonators and L-system", "Relógio, eventos, ressonadores e L-system", "Horloge, événements, résonateurs et L-system", "Reloj, eventos, resonadores y L-system" },
@@ -863,7 +876,7 @@ inline const std::array<L4, 16>& moduleDetails()
         { "Rotation, layout and shared/reconfigurable pools", "Rotação, layout e pools compartilhados/reconfiguráveis", "Rotation, disposition et pools partagés/reconfigurables", "Rotación, disposición y pools compartidos/reconfigurables" },
         { "Banks, RandomToLoop and cellular automaton", "Bancos, RandomToLoop e autômato celular", "Banques, RandomToLoop et automate cellulaire", "Bancos, RandomToLoop y autómata celular" },
         { "ShiftRegisterMemory and ProbabilityDistribution", "ShiftRegisterMemory e ProbabilityDistribution", "ShiftRegisterMemory et ProbabilityDistribution", "ShiftRegisterMemory y ProbabilityDistribution" },
-        { "Evolution, cross-feedback, thresholds and behavioural scenes", "Evolução, cross-feedback, limiares e cenas comportamentais", "Évolution, rétroaction croisée, seuils et scènes comportementales", "Evolución, realimentación cruzada, umbrales y escenas de comportamiento" },
+        { "Evolution, cross-feedback, thresholds and behavioural scenes", "Evolução, realimentação cruzada, limiares e cenas comportamentais", "Évolution, rétroaction croisée, seuils et scènes comportementales", "Evolución, realimentación cruzada, umbrales y escenas de comportamiento" },
         { "Integrity, memory, hunger and an input-less bus", "Integridade, memória, fome e barramento sem entrada", "Intégrité, mémoire, faim et bus sans entrée", "Integridad, memoria, hambre y bus sin entrada" }
     }};
     return table;

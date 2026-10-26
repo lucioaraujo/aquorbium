@@ -77,7 +77,7 @@ memória e os corpos dos organismos. Um teclado MIDI também pode tocar notas.
 
 **Para começar:**
 1. Abra o **TUTORIAL**. Os capítulos 1 a 8 explicam o instrumento; as
-   **lições 9 a 13** ensinam o dispositivo de síntese, um controle por vez.
+   **lições 10 a 14** ensinam o dispositivo de síntese, um controle por vez.
 2. Ligue o **LEARN** e aponte para qualquer controle: a explicação aparece no
    painel.
 3. Suba **MÚSICA** (cartão GEOMETRIA): os acontecimentos passam a nascer da

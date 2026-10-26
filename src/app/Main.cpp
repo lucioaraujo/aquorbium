@@ -1873,9 +1873,10 @@ public:
             auto left = area.removeFromLeft(250);
             area.removeFromLeft(16);
             contentsHeading.setBounds(left.removeFromTop(22));
-            // up to 38 px each, fewer when the window is short (12 chapters
-            // since the synthesis device: 2026-10-22)
-            const auto buttonHeight = juce::jlimit(26, 38, left.getHeight() / static_cast<int>(chapterButtons.size()));
+            // up to 38 px each, fewer when the window is short (18 chapters
+            // since the opening chapter, 2026-10-26: at 960x600 the 18th did
+            // not fit with a 26 px minimum)
+            const auto buttonHeight = juce::jlimit(22, 38, left.getHeight() / static_cast<int>(chapterButtons.size()));
             for (auto& b : chapterButtons)
                 b.setBounds(left.removeFromTop(buttonHeight).reduced(0, 3));
             auto bottom = area.removeFromBottom(36);
@@ -3145,7 +3146,7 @@ public:
                 aquorbium::app::currentLang() = aquorbium::app::Lang::pt;
                 guide.setBounds(getLocalBounds());
                 // chapter 8 (the synthesis device), lesson 5 (the longest) and ABOUT
-                for (const auto page : { 7, 12, -1 })
+                for (const auto page : { 1, 8, 13, -1 })  // the opening, the synthesis device, lesson 5, ABOUT
                 {
                     const auto kind = page < 0 ? GuideOverlay::Kind::about : GuideOverlay::Kind::tutorial;
                     guide.show(kind);
@@ -3158,7 +3159,7 @@ public:
                             return fail(juce::String(size.x) + "x" + juce::String(size.y) + ": a guide control outside its card, "
                                         + child->getBounds().toString());
                     const auto file = directory.getChildFile(juce::String(size.x) + "x" + juce::String(size.y)
-                        + (page == 7 ? "-tutorial-synthesis.png" : page == 12 ? "-tutorial-lesson5.png" : "-about.png"));
+                        + (page == 1 ? "-tutorial-opening.png" : page == 8 ? "-tutorial-synthesis.png" : page == 13 ? "-tutorial-lesson5.png" : "-about.png"));
                     if (file.exists()) return false;
                     juce::Image image(juce::Image::ARGB, getWidth(), getHeight(), true);
                     juce::Graphics graphics(image);
@@ -6079,7 +6080,12 @@ private:
                                                    + (world.harmony.polytonal ? " + " + (localized ? T(S::polytonal) : juce::String("polytonal"))
                                                                               : juce::String())
                                              : juce::String();
-        return juce::String(names[static_cast<std::size_t>(tonic)]) + " " + world.modeName + language
+        auto mode = juce::String(world.modeName);
+        if (localized)
+            for (const auto& m : S::sessionModes)
+                if (mode == m.core)
+                    mode = T(m.name);
+        return juce::String(names[static_cast<std::size_t>(tonic)]) + " " + mode + language
             + utf8(" · ") + (localized ? T(S::orbit) : juce::String("orbit")) + " "
             + juce::String(static_cast<int>(world.orbitSteps));
     }
