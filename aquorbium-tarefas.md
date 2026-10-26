@@ -51,6 +51,16 @@ As outras escutas da lista A seguem depois da v0.1.0, como melhoria.
       (4 línguas), `CHANGELOG.md`, o README público;
 - [ ] a pendência do true peak normativo (README, estágio de saída).
 
+**CI (2026-10-26/27, repositório público: gratuita):** Linux e macOS
+passam (build, 83 testes, pacotes, Universal 2 selado). O Windows passou a
+compilar (`EngineSoakTests` sem POSIX) e os testes que caíam por estouro
+de pilha (o `BiomaEngine` tem ~870 KB) passaram com `/STACK` de 16 MB nos
+executáveis do MSVC; resta o `aquorbium_ambisonic_tests`, que termina com
+0xc0000409 na gravação do arquivo AmbiX (marcas finas em `9c232ea` para
+achar a linha). Dois testes frágeis no macOS arm64 (FMA) foram tornados
+robustos: o período pelas passagens do equilíbrio, o rubato em cinco
+temporadas.
+
 **Validado localmente (2026-10-26, `1c4b7fb`):** ctest 83/83; auditoria de
 layout nos quatro tamanhos e o editor de síntese em FR e ES; o `.deb`, o
 `.tar.gz` e o AppImage gerados e abertos (janela em 20 s, ~55 MB de
@@ -65,9 +75,22 @@ web própria pode inovar"):
       `deploy-site.yml`; o próprio desta página: o **sonar vivo** e a
       **semente desta visita** (`website/README.md`);
 - [x] conferido no Chrome sem janela, no desktop (1440) e no celular (390);
-- [ ] ligar o GitHub Pages no repositório (Settings → Pages → Source:
-      GitHub Actions) e o primeiro envio; até o lançamento, `noindex` e
-      "em preparação";
+- [x] o GitHub Pages ligado (2026-10-26) e o site no ar em
+      <https://lucioaraujo.github.io/aquorbium/>; até o lançamento,
+      `noindex` e "em preparação";
+- [x] (2026-10-27, pedidos do autor) o menu Sobre | Como tocar | Tutorial |
+      A ideia | Instalação | Baixar, 20 páginas em quatro línguas:
+      - **Como tocar:** uma seção por área da tela, com a captura do app
+        tocando em cada língua (`website/assets/guia/`), o texto do LEARN e
+        os 95 controles explicados, lidos do próprio app;
+      - **Tutorial:** os 18 capítulos, lidos do `Tutorial.h`;
+      - **A ideia:** a origem, os conceitos, a composição generativa, as
+        referências (o SOBRE do app) e a licença;
+      - **Instalação:** o `INSTALL.md`, com os requisitos mínimos;
+      - os cinco seres explicados (natureza, som, o que fazem, o que
+        explorar), conferidos contra o `Ecosystem.cpp`;
+- [ ] as capturas do "Como tocar" refeitas quando a interface mudar
+      (`website/README.md`, como gerar);
 - [ ] no lançamento: `PUBLICADO = True` no gerador, e o card no portal RASGO
       (`RASGO_WEBSITE/`; o envio do portal é do autor).
 
