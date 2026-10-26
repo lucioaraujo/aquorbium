@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aquorbium — instalação</title>
+<meta name="description" content="Como instalar o Aquorbium no Windows, no macOS e no Linux, passo a passo, os avisos de segurança da primeira abertura e as soluções de problemas." />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="assets/identity/aquorbium-favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="styles.css" />
+<script src="assets/contact.js" defer></script>
+</head>
+<body>
+<div class="rasgo-strip"><a href="https://rasgoinstruments.arquiviagem.net/">RASGO — família de instrumentos e pesquisa sonora</a></div>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="site-header">
+  <a class="brand" href="index.html" aria-label="Aquorbium">
+    <img src="assets/identity/aquorbium-symbol.svg" alt="" width="40" height="40" />
+    <img class="wordmark" src="assets/identity/aquorbium-wordmark.svg" alt="AQUORBIUM" width="196" height="25" />
+  </a>
+  <div class="header-nav">
+    <nav class="page-nav" aria-label="Páginas">
+      <a href="index.html">Sobre</a>
+      <a href="como-tocar.html">Como tocar</a>
+      <a href="tutorial.html">Tutorial</a>
+      <a href="ideia.html">A ideia</a>
+      <a href="instalacao.html" aria-current="page">Instalação</a>
+      <a href="index.html#baixar">Baixar</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Idioma">
+      <a href="instalacao.html" aria-current="true">PT</a>
+      <a href="instalacao-en.html">EN</a>
+      <a href="instalacao-fr.html">FR</a>
+      <a href="instalacao-es.html">ES</a>
+    </nav>
+  </div>
+</div>
+
+<main id="conteudo" class="doc">
+<section class="doc-head">
+  <h1>Instalação</h1>
+</section>
+<div class="doc-text install">
+<h2 id="instalar-passo-a-passo">Instalar, passo a passo</h2>
+<p>Os pacotes de cada sistema estão na <a href="https://github.com/lucioaraujo/aquorbium/releases">página de releases</a>; o mais novo fica no topo. Os avisos de segurança abaixo <strong>são esperados</strong>. Não indicam nenhum problema e só aparecem na primeira vez.</p>
+<h3 id="windows">Windows</h3>
+<ol><li>Baixe <code>aquorbium-&lt;versão&gt;-win64.exe</code>.</li><li>Abra. O Windows mostra uma caixa azul <strong>"O Windows protegeu o computador"</strong>: clique em <strong>"Mais informações"</strong> e depois em <strong>"Executar assim mesmo"</strong>.</li><li>Se o Windows pedir permissão de administrador, clique em <strong>"Sim"</strong>.</li><li>Clique em <strong>"Avançar"</strong> até o fim. A última página já traz <strong>"Executar Aquorbium"</strong> marcado. O Aquorbium fica no <strong>menu Iniciar</strong> e na área de trabalho.</li></ol>
+<p><strong>Sem instalar:</strong> descompacte <code>aquorbium-&lt;versão&gt;-win64.zip</code> e abra <code>Aquorbium.exe</code>.</p>
+<h3 id="macos">macOS</h3>
+<ol><li>Baixe <code>aquorbium-&lt;versão&gt;-Darwin.dmg</code>. Funciona em Macs Intel e Apple Silicon.</li><li>Abra e <strong>arraste o Aquorbium para Aplicativos</strong>.</li><li>Abra. Na primeira vez, o macOS <strong>bloqueia</strong> o app com uma mensagem dizendo que a Apple não pôde confirmar que ele está livre de software malicioso. Pode aparecer também "não é possível verificar o desenvolvedor" ou "está danificado e não pode ser aberto". Em todos os casos:<ul><li><strong>Não é defeito nem vírus</strong>: o app é assinado ad hoc, sem um Developer ID pago da Apple.</li><li>Clique em <strong>"OK"</strong> ou <strong>"Concluído"</strong>, <strong>não</strong> em "Mover para o Lixo".</li></ul></li><li>Permita o app, uma vez, de um destes jeitos:<ul><li><strong>Nos Ajustes do Sistema:</strong> vá em <strong>Privacidade e Segurança</strong>, desça até a seção de segurança, clique em <strong>"Abrir Mesmo Assim"</strong>, confirme com a senha ou o Touch ID e clique em <strong>"Abrir"</strong>. No macOS 14 ou anterior: clique com o botão direito no app, no Finder → <strong>Abrir → Abrir</strong>.</li><li><strong>No Terminal</strong>, se o botão não aparecer:</li></ul></li></ol>
+<pre><code>xattr -dr com.apple.quarantine "/Applications/Aquorbium.app"</code></pre>
+<p>Se nada for impresso, deu certo. O comando só tira a "marca de quarentena" que o macOS põe em todo arquivo baixado.</p>
+<h3 id="linux">Linux</h3>
+<ul><li><strong>Ubuntu 22.04+, Debian 12+, Mint 21+:</strong> clique duas vezes no <code>.deb</code>, ou rode <code>sudo apt install ./aquorbium-&lt;versão&gt;-Linux.deb</code>.</li><li><strong>Fedora, Arch, openSUSE e outras distribuições:</strong><ul><li><strong>AppImage:</strong> torne-o executável (Propriedades → permitir executar, ou <code>chmod +x</code>) e abra.</li><li><strong><code>.tar.gz</code>:</strong> descompacte e rode <code>./install.sh</code>. Instala só para o seu usuário, sem root; <code>./install.sh --remove</code> desfaz.</li></ul></li></ul>
+<h2 id="na-primeira-abertura">Na primeira abertura</h2>
+<ol><li><strong>Cada abertura é uma peça nova.</strong> A semente da sessão propõe um bioma - a água, a luz, a população, os corpos, quais módulos acordam - e um mundo de tonalidades, harmonia e forma. Com o <strong>VARIA</strong> ligado (faixa de baixo), os controles também se movem devagar sozinhos. Toque a partir daí.</li><li>O botão <strong>TUTORIAL</strong> explica o instrumento passo a passo, e o <strong>LEARN</strong> explica qualquer controle que você apontar, em inglês, português, francês ou espanhol (o botão de idioma: EN/PT/FR/ES).</li><li><strong>ÁUDIO</strong> escolhe a saída. <strong>FONES</strong> põe cada organismo em volta da sua cabeça: use só com fones.</li><li>O microfone (a <strong>SALA</strong>) fica desligado até você ligar.</li></ol>
+<h2 id="problemas-e-solucoes">Problemas e soluções</h2>
+<p><strong>Windows: "O Windows protegeu o computador".</strong> Clique em <strong>"Mais informações"</strong> e em <strong>"Executar assim mesmo"</strong>. Se um antivírus puser o <code>Aquorbium.exe</code> em quarentena, restaure e permita: o programa é construído pela integração contínua pública deste repositório, a partir deste código.</p>
+<p><strong>macOS: "danificado", "não é possível verificar o desenvolvedor" ou "a Apple não pôde confirmar".</strong> Siga o passo 4 do <a href="#macos">macOS</a>: <strong>Abrir Mesmo Assim</strong> em Privacidade e Segurança, ou o comando <code>xattr</code> no Terminal.</p>
+<p><strong>Linux: a janela não abre.</strong> Instale o <code>.deb</code> com o <code>apt</code>, que também instala as dependências. Com o AppImage ou o <code>.tar.gz</code>, o sistema precisa de ALSA, FreeType, Fontconfig, X11 e GLib, que todo desktop tem. Se o <strong>AppImage</strong> não abrir, instale o <code>libfuse2</code> (Ubuntu 22.04+: <code>sudo apt install libfuse2</code>), ou abra com <code>./aquorbium-&lt;versão&gt;-linux-x86_64.AppImage --appimage-extract-and-run</code>.</p>
+<p><strong>Sem som.</strong> Clique em <strong>ÁUDIO</strong> e escolha a saída. Confira também o <strong>VOLUME DE SAÍDA</strong> no cabeçalho e se <strong>SILENCIAR</strong> e <strong>PAUSA</strong> estão desligados.</p>
+<p><strong>Estalos ou falhas no som.</strong> Em <strong>ÁUDIO</strong>, escolha um buffer de <strong>512</strong> amostras. No Linux a thread de áudio pede prioridade de tempo real; a linha de status mostra <strong>RT 70</strong> quando consegue e <strong>RT não</strong> quando não. Para permitir, ponha o seu usuário no grupo <code>audio</code> ou <code>pipewire</code> (conforme a distribuição) e reinicie o computador. Programas pesados ao lado do Aquorbium (compiladores, vídeo) também causam falhas.</p>
+<p><strong>Qualquer outra coisa:</strong> escreva para <strong>rasgo.instruments@gmail.com</strong> com o sistema e a versão, o que você fez e a mensagem que apareceu. Também pode abrir uma <a href="https://github.com/lucioaraujo/aquorbium/issues">issue</a>.</p>
+<h2 id="requisitos">Requisitos</h2>
+<table><tr><td><strong>Windows</strong></td><td>Windows 10 ou 11, 64 bits</td></tr><tr><td><strong>macOS</strong></td><td>10.15 ou mais novo; Intel e Apple Silicon (Universal 2)</td></tr><tr><td><strong>Linux</strong></td><td>x86-64 com glibc 2.35 ou mais nova (distribuições de 2022 em diante)</td></tr><tr><td><strong>Processador</strong></td><td>64 bits, dois núcleos ou mais. <strong>Medido</strong> num Intel Core i5-6500 (2015, 4 núcleos), a 48 kHz e blocos de 512 amostras: o áudio usa cerca de 7 % do tempo de cada bloco (no máximo 9 %)</td></tr><tr><td><strong>Memória</strong></td><td>cerca de 55 MB tocando (medido)</td></tr><tr><td><strong>Disco</strong></td><td>cerca de 15 MB</td></tr><tr><td><strong>Áudio</strong></td><td>qualquer saída; microfone só para a SALA</td></tr></table>
+<p>O valor do processador foi medido na máquina do autor. Máquinas mais fracas não foram testadas.</p>
+<h2 id="compilar-a-partir-do-codigo">Compilar a partir do código</h2>
+<pre><code>git clone https://github.com/lucioaraujo/aquorbium.git
+git clone --branch 9.0.3 https://github.com/juce-framework/JUCE.git
+cmake -S aquorbium -B aquorbium/build -DCMAKE_BUILD_TYPE=Release -DAQUORBIUM_JUCE_PATH=$PWD/JUCE
+cmake --build aquorbium/build --parallel 2
+(cd aquorbium/build &amp;&amp; ctest -LE slow --output-on-failure)</code></pre>
+<p>No Linux, o build do JUCE precisa dos pacotes de desenvolvimento de ALSA, FreeType, Fontconfig, X11 e GTK. O fluxo <code>.github/workflows/package.yml</code> traz a lista.</p>
+<h2 id="estado">Estado</h2>
+<p>A versão 0.1.0 é a primeira versão pública. Os pacotes de Windows e macOS são construídos, testados e conferidos pela integração contínua: sem dependência do Visual C++ Redistributable, e um pacote Universal 2 selado no macOS. Ainda não foram abertos pelo autor em Windows e Mac reais.</p>
+<h2 id="licenca">Licença</h2>
+<p>AGPL-3.0-or-later (<code>LICENSE-AGPL-3.0.txt</code>). Créditos e fontes: <code>CREDITS_AND_SOURCES.md</code>. Problemas: <strong>rasgo.instruments@gmail.com</strong>.</p>
+</div>
+</main>
+
+<footer class="site-footer">
+  <span>© Lúcio de Araújo · Aquorbium 2026 · RASGO</span>
+  <nav>
+    <a href="https://github.com/lucioaraujo/aquorbium">GitHub</a> ·
+    <a href="https://github.com/lucioaraujo/aquorbium/blob/main/CREDITS_AND_SOURCES.md">Créditos</a> ·
+    <a href="https://github.com/lucioaraujo/aquorbium/blob/main/LICENSE-AGPL-3.0.txt">Licença AGPLv3+</a>
+  </nav>
+</footer>
+<dialog class="contact-dialog" data-contact-dialog aria-labelledby="contact-title">
+  <button class="dialog-close" type="button" data-contact-close aria-label="Fechar janela de contato">×</button>
+  <h2 id="contact-title">CONTATO</h2>
+  <p>Copie o endereço de e-mail:</p>
+  <code data-contact-address></code>
+  <button class="button button-primary" type="button" data-contact-copy>Copiar e-mail</button>
+  <p class="contact-feedback" data-contact-feedback data-copied="E-mail copiado." data-fallback="Selecione e copie o endereço acima." aria-live="polite"></p>
+</dialog>
+</body>
+</html>

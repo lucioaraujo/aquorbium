@@ -29,6 +29,30 @@ GRUPOS = [
         {"arquivo": "fr.html", "url": "fr.html", "lang": "fr"},
         {"arquivo": "es.html", "url": "es.html", "lang": "es"},
     ],
+    [
+        {"arquivo": "tutorial.html", "url": "tutorial.html", "lang": "pt-BR"},
+        {"arquivo": "tutorial-en.html", "url": "tutorial-en.html", "lang": "en"},
+        {"arquivo": "tutorial-fr.html", "url": "tutorial-fr.html", "lang": "fr"},
+        {"arquivo": "tutorial-es.html", "url": "tutorial-es.html", "lang": "es"},
+    ],
+    [
+        {"arquivo": "instalacao.html", "url": "instalacao.html", "lang": "pt-BR"},
+        {"arquivo": "instalacao-en.html", "url": "instalacao-en.html", "lang": "en"},
+        {"arquivo": "instalacao-fr.html", "url": "instalacao-fr.html", "lang": "fr"},
+        {"arquivo": "instalacao-es.html", "url": "instalacao-es.html", "lang": "es"},
+    ],
+    [
+        {"arquivo": "como-tocar.html", "url": "como-tocar.html", "lang": "pt-BR"},
+        {"arquivo": "como-tocar-en.html", "url": "como-tocar-en.html", "lang": "en"},
+        {"arquivo": "como-tocar-fr.html", "url": "como-tocar-fr.html", "lang": "fr"},
+        {"arquivo": "como-tocar-es.html", "url": "como-tocar-es.html", "lang": "es"},
+    ],
+    [
+        {"arquivo": "ideia.html", "url": "ideia.html", "lang": "pt-BR"},
+        {"arquivo": "ideia-en.html", "url": "ideia-en.html", "lang": "en"},
+        {"arquivo": "ideia-fr.html", "url": "ideia-fr.html", "lang": "fr"},
+        {"arquivo": "ideia-es.html", "url": "ideia-es.html", "lang": "es"},
+    ],
 ]
 
 

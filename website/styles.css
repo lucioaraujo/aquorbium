@@ -46,6 +46,12 @@ a:hover { color: var(--ink); }
 .brand { display: flex; align-items: center; gap: .8rem; text-decoration: none; }
 .brand img { display: block; width: 2.5rem; height: 2.5rem; }
 .brand img.wordmark { width: auto; height: 1.4rem; }
+/* o menu das páginas, ao lado das línguas (o padrão dos sites do Modular e do Antitotem) */
+.header-nav { display: flex; gap: 1.4rem; align-items: center; flex-wrap: wrap; }
+.page-nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+.page-nav a { color: var(--muted); text-decoration: none; font: 700 .74rem "DejaVu Sans Mono", monospace; letter-spacing: .08em; text-transform: uppercase; padding-bottom: .15rem; }
+.page-nav a:hover { color: var(--cyan); }
+.page-nav a[aria-current] { color: var(--cyan); border-bottom: 2px solid var(--cyan); }
 .lang-switch { display: flex; gap: .4rem; }
 .lang-switch a { padding: .3rem .55rem; border: 1px solid var(--line); color: var(--muted); text-decoration: none; font: .72rem "DejaVu Sans Mono", monospace; letter-spacing: .06em; }
 .lang-switch a[aria-current="true"] { color: var(--cyan); border-color: var(--cyan); }
@@ -126,7 +132,57 @@ figure.shot figcaption { margin-top: .6rem; color: var(--muted); font: .78rem/1.
 .dialog-close { position: absolute; top: .6rem; right: .7rem; border: 0; background: transparent; color: var(--muted); font-size: 1.7rem; line-height: 1; cursor: pointer; }
 .dialog-close:hover { color: var(--cyan); }
 
+/* as páginas de texto: o tutorial e a instalação */
+.doc-head { padding: clamp(2rem, 6vw, 4rem) clamp(1.2rem, 8vw, 6rem) 1rem; }
+.doc-head h1 { margin: 0 0 .6rem; font-size: clamp(2rem, 5vw, 3.2rem); }
+.doc-head .lead { max-width: 720px; color: var(--muted); margin: 0; }
+.doc-body { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); padding: 1rem clamp(1.2rem, 8vw, 6rem) 4rem; align-items: start; }
+.doc-toc { position: sticky; top: 7.5rem; padding: 1rem; border: 1px solid var(--line); background: var(--surface); max-height: calc(100vh - 9rem); overflow: auto; }
+.doc-toc h2 { margin: 0 0 .6rem; font: 700 .76rem "DejaVu Sans Mono", monospace; color: var(--cyan); letter-spacing: .1em; text-transform: uppercase; }
+.doc-toc ol { margin: 0; padding-left: 1.4rem; font-size: .84rem; }
+.doc-toc li { margin: .25rem 0; color: var(--muted); }
+.doc-toc a { color: var(--muted); text-decoration: none; }
+.doc-toc a:hover { color: var(--cyan); }
+.doc-text { max-width: 780px; }
+/* grid children may shrink below their content (a 1400 px image pushed the phone layout wide) */
+.doc-body > *, .doc-text, .chapter, .guide-shot { min-width: 0; }
+.doc-text.install { max-width: none; padding: 0 clamp(1.2rem, 8vw, 6rem) 4rem; }
+.doc-text.install > * { max-width: 860px; }
+.doc-text p, .doc-text li { color: var(--muted); }
+.doc-text strong { color: var(--ink); }
+.doc-text h2 { margin: 2.2rem 0 .8rem; font-size: clamp(1.3rem, 2.6vw, 1.8rem); scroll-margin-top: 7.5rem; }
+.doc-text h3 { margin: 1.6rem 0 .5rem; font: 700 1rem "DejaVu Sans Mono", monospace; color: var(--cyan); letter-spacing: .04em; scroll-margin-top: 7.5rem; }
+.chapter { padding: 0 0 2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); scroll-margin-top: 7.5rem; }
+.chapter h2 { margin-top: 0; }
+.chapter-number { display: inline-block; min-width: 2rem; color: var(--cyan); font-family: "DejaVu Sans Mono", monospace; }
+.tip { border-left: 2px solid var(--amber); padding: .4rem 0 .4rem 1rem; background: rgba(243, 183, 91, .06); }
+.doc-text code { font: .86em "DejaVu Sans Mono", monospace; color: var(--ink); background: var(--panel); padding: .05rem .3rem; }
+.doc-text pre { padding: .9rem 1rem; background: var(--panel); border: 1px solid var(--line); overflow-x: auto; }
+.doc-text pre code { padding: 0; background: none; color: var(--cyan); }
+.doc-text table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .88rem; }
+.doc-text td { padding: .55rem .7rem; border: 1px solid var(--line); color: var(--muted); vertical-align: top; }
+.doc-text td:first-child { white-space: nowrap; }
+
+/* "Como tocar": a captura de cada cartão, o que faz, e a tabela dos controles */
+.guide-card .function { margin-top: -.4rem; color: var(--cyan) !important; font: 700 .82rem "DejaVu Sans Mono", monospace; letter-spacing: .04em; }
+.guide-shot { margin: 1rem 0; }
+.guide-shot img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); }
+.guide-ecosystem img { max-width: min(420px, 100%); }
+/* the bottom strip and the header are long and thin: legible size, scrolled inside */
+.guide-strip, .guide-header { overflow-x: auto; border: 1px solid var(--line); }
+.guide-strip img, .guide-header img { max-width: none; width: 1400px; border: 0; }
+.controls { margin-top: 1.2rem; }
+.controls caption { text-align: left; padding: 0 0 .4rem; font: 700 .76rem "DejaVu Sans Mono", monospace; color: var(--cyan); letter-spacing: .1em; text-transform: uppercase; }
+.controls th { text-align: left; padding: .55rem .7rem; border: 1px solid var(--line); color: var(--ink); font: 700 .78rem "DejaVu Sans Mono", monospace; letter-spacing: .04em; white-space: nowrap; vertical-align: top; background: var(--surface); }
+/* os seres na página Sobre: quatro parágrafos curtos em cada cartão */
+.organisms { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.organisms p { margin: 0 0 .5rem; }
+.organisms strong { color: var(--ink); }
+
 @media (max-width: 860px) {
+  .controls th { white-space: normal; }
+  .doc-body { grid-template-columns: 1fr; }
+  .doc-toc { position: static; max-height: none; }
   .hero { grid-template-columns: 1fr; }
   .sonar { max-width: 360px; }
 }
