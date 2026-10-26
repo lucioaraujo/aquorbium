@@ -424,14 +424,30 @@ int main()
     // turns, and ornaments cluster where the subject changes
     {
         const auto& t = season.last;
-        const auto early = t.rubatoTurnsEarly > 0 ? t.rubatoGapEarly / static_cast<float>(t.rubatoTurnsEarly) : 0.0f;
-        const auto late = t.rubatoTurnsLate > 0 ? t.rubatoGapLate / static_cast<float>(t.rubatoTurnsLate) : 0.0f;
+        // the rubato gap summed over five seasons: one season gave only 14
+        // to 17 turns from the fourth, and which exchanges a chaotic season
+        // produces moves with the last bit of the arithmetic (the macOS arm64
+        // build, with fused multiply-add, measured no fall at all, 2026-10-26).
+        // The convergence itself is checked turn by turn in CodaExchangeTests.
+        double gapEarly = t.rubatoGapEarly, gapLate = t.rubatoGapLate;
+        unsigned turnsEarly = t.rubatoTurnsEarly, turnsLate = t.rubatoTurnsLate;
+        for (const auto more : { 0x5eed0001u, 0x5eed0002u, 0x5eed0003u, 0x5eed0004u })
+        {
+            const auto extra = run(1.0f, 300.0, more).last;
+            gapEarly += extra.rubatoGapEarly;
+            gapLate += extra.rubatoGapLate;
+            turnsEarly += extra.rubatoTurnsEarly;
+            turnsLate += extra.rubatoTurnsLate;
+        }
+        const auto early = turnsEarly > 0 ? static_cast<float>(gapEarly / turnsEarly) : 0.0f;
+        const auto late = turnsLate > 0 ? static_cast<float>(gapLate / turnsLate) : 0.0f;
         const auto onChange = static_cast<float>(t.ornamentsOnChange) / static_cast<float>(std::max(1u, t.subjectChanges));
         const auto steady = static_cast<float>(t.ornamentsSteady) / static_cast<float>(std::max(1u, t.steadyCodas));
-        std::cout << "codas: rubato gap " << early << " at the first turns (" << t.rubatoTurnsEarly << "), " << late
-                  << " from the fourth (" << t.rubatoTurnsLate << "); ornaments " << onChange * 100.0f
+        std::cout << "codas: rubato gap " << early << " at the first turns (" << turnsEarly << ", five seasons), " << late
+                  << " from the fourth (" << turnsLate << "); ornaments " << onChange * 100.0f
                   << "% on a change of subject vs " << steady * 100.0f << "% steady\n";
         check(t.rubatoTurnsEarly >= 10 && t.rubatoTurnsLate >= 10, "the season has exchanges of several turns");
+        check(turnsLate >= 50, "five seasons give enough late turns to measure");
         check(late < early * 0.6f, "the rubato gap between partners falls over the dialogue");
         check(onChange > 2.5f * steady, "ornaments mark changes of subject");
     }

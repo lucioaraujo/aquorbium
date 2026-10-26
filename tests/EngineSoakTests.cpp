@@ -12,8 +12,10 @@
 #include "core/SynthProposal.h"
 #include "core/TruePeakDetector.h"
 
-#include <sys/resource.h>
-#include <time.h>
+#if !defined(_WIN32)
+ #include <sys/resource.h>
+ #include <time.h>
+#endif
 
 #include <algorithm>
 #include <array>
@@ -28,18 +30,28 @@ namespace
 {
 // the thread's own CPU time: a wall clock counts the moments the system took
 // the thread away (a 27 ms "block" on a loaded machine was that)
+// (on Windows, built by the release CI but not run there - the soak is
+// labelled slow: a monotonic wall clock, and no memory reading)
 double threadMicroseconds()
 {
+#if defined(_WIN32)
+    return std::chrono::duration<double, std::micro>(std::chrono::steady_clock::now().time_since_epoch()).count();
+#else
     timespec t {};
     clock_gettime(CLOCK_THREAD_CPUTIME_ID, &t);
     return static_cast<double>(t.tv_sec) * 1.0e6 + static_cast<double>(t.tv_nsec) / 1.0e3;
+#endif
 }
 
 long residentKilobytes()
 {
+#if defined(_WIN32)
+    return 0;
+#else
     rusage usage {};
     getrusage(RUSAGE_SELF, &usage);
     return usage.ru_maxrss;
+#endif
 }
 }
 

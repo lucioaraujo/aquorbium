@@ -34,6 +34,11 @@ int main()
     lv.setPeriod(120.0f);
     const float dt = 0.01f;
     std::vector<float> preyPeaks, predatorPeaks;
+    // the period from the prey rising through the equilibrium (N = 1), with
+    // the time interpolated: a flat top makes "a peak" fragile in the last
+    // bit of the arithmetic (the macOS arm64 build, with fused multiply-add,
+    // found another period from the peaks, 2026-10-26); a crossing is not
+    std::vector<float> rises;
     float pN = lv.prey(), ppN = pN, pP = lv.predators(), ppP = pP;
     float minimum = 1.0e9f, maximum = 0.0f;
     float firstPrey = lv.prey(), firstPredators = lv.predators();
@@ -41,6 +46,8 @@ int main()
     {
         lv.advance(dt);
         const auto n = lv.prey(), p = lv.predators();
+        if (pN < 1.0f && n >= 1.0f)
+            rises.push_back((static_cast<float>(k - 1) + (1.0f - pN) / (n - pN)) * dt);
         minimum = std::min({ minimum, n, p });
         maximum = std::max({ maximum, n, p });
         // a peak, at least 10 s after the previous one (a flat top repeats)
@@ -55,7 +62,9 @@ int main()
     check(preyPeaks.size() >= 4, "the prey cycle several times in ten minutes");
     if (preyPeaks.size() >= 3)
     {
-        const auto period = (preyPeaks.back() - preyPeaks.front()) / static_cast<float>(preyPeaks.size() - 1);
+        const auto period = rises.size() >= 2
+            ? (rises.back() - rises.front()) / static_cast<float>(rises.size() - 1) : 0.0f;
+        std::cout << "period " << period << " s over " << rises.size() << " rises; " << preyPeaks.size() << " prey peaks\n";
         check(std::abs(period - 120.0f) < 12.0f, "the cycle lasts about the set period");
         // the predators peak a quarter cycle (or so) after the prey
         float lag = 1.0e9f;
