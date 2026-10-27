@@ -2561,6 +2561,8 @@ public:
             // "opening.seeded" = 0 restores the saved controls, as before
             if (settings.getBoolValue("opening.seeded", true))
                 applyOpeningSeed();
+            else
+                settings.setValue("opening.lastWasSeeded", false);
             variaAllowed = true;
             inhabitMotion();
             const auto room = settings.getBoolValue("room.enabled", false);
@@ -5457,7 +5459,12 @@ private:
     void applyOpeningSeed()
     {
         auto state = capturePerformanceState();
-        settings.setValue("opening.previousStateV1", state.snapshot().toXmlString());
+        // the musician's own state, kept once: from the second seeded opening
+        // on, what was restored is the previous seed's (saved at closing),
+        // and writing it here lost the musician's (found 2026-10-27)
+        if (!settings.getBoolValue("opening.lastWasSeeded", false))
+            settings.setValue("opening.previousStateV1", state.snapshot().toXmlString());
+        settings.setValue("opening.lastWasSeeded", true);
         const auto& world = engine.currentSessionWorld();
         const auto biome = aquorbium::OpeningHypothesis::fromSeed(sessionSeed, world.dayPhase, world.seasonPhase);
         for (std::size_t i = 0; i < biome.count; ++i)

@@ -183,8 +183,14 @@ public:
     // close the output is to its ceiling) brings everything home.
     void tick(std::span<float> values, float dt, float activity, float tension, float nearCeiling = 0.0f) noexcept
     {
-        if (intensity <= 0.0f || count == 0 || !(dt > 0.0f))
+        if (intensity <= 0.0f || count == 0 || !(dt > 0.0f) || !std::isfinite(dt))
             return;
+        // a non-finite reading from the audio side would make the hand's
+        // speed NaN for good, and every control after it (2026-10-27)
+        const auto finite = [](float v, float fallback) { return std::isfinite(v) ? v : fallback; };
+        activity = finite(activity, 0.5f);
+        tension = finite(tension, 0.5f);
+        nearCeiling = finite(nearCeiling, 0.0f);
         const auto target = 0.35 + 0.9 * static_cast<double>(std::clamp(activity, 0.0f, 1.0f));
         speed += (target - speed) * (1.0 - std::exp(-static_cast<double>(dt) * 0.2));
         const auto step = static_cast<double>(dt) * 0.45 * speed;
@@ -228,6 +234,8 @@ public:
             auto& f = fibres[i];
             if (f.reach == Reach::fixed)
                 continue;
+            if (!std::isfinite(values[i]))
+                values[i] = f.value;
             if (std::abs(values[i] - f.value) > 0.012f)
             {
                 // the musician's hand: breathe around the new value

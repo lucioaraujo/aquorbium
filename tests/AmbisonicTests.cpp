@@ -223,6 +223,17 @@ int main()
         std::cout << "ambix: reading back\n";
         std::ifstream in(file, std::ios::binary);
         const std::vector<unsigned char> bytes { std::istreambuf_iterator<char>(in), {} };
+        // closed before the removal below: Windows refuses to delete an open
+        // file, and the throwing remove() ended the test in std::terminate
+        // (0xc0000409 on the CI, 2026-10-27)
+        in.close();
+        if (bytes.size() != 80 + frames * 16)
+        {
+            check(false, "ambix file: size " + std::to_string(bytes.size()));
+            std::error_code ignored;
+            std::filesystem::remove(file, ignored);
+            return EXIT_FAILURE;
+        }
         const auto u16 = [&bytes](std::size_t at) { return static_cast<unsigned>(bytes[at] | (bytes[at + 1] << 8)); };
         const auto u32 = [&bytes](std::size_t at) {
             return static_cast<std::uint32_t>(bytes[at]) | (static_cast<std::uint32_t>(bytes[at + 1]) << 8)
@@ -243,7 +254,9 @@ int main()
               "ambix file: fact and data");
         check(f32(0, 0) == 0.1f && f32(0, 3) == 0.4f && f32(7, 2) == 0.0f && f32(8, 2) == 0.3f + 8.0e-4f,
               "ambix file: W Y Z X in order, non-finite as silence");
-        std::filesystem::remove(file);
+        std::error_code removal;
+        std::filesystem::remove(file, removal);
+        check(!removal, "ambix file: removed after the test");
     }
 
     if (failures == 0)

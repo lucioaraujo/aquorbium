@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
+#include <limits>
 #include <set>
 #include <sstream>
 #include <string>
@@ -194,6 +195,23 @@ int main()
         check(fixedStill, "the bodies' choice and the master never move");
         check(closedStill, "a closed gate stays exactly closed");
         check(visited.size() > 20, "the free control visits many values");
+    }
+    {
+        // a non-finite reading never reaches a control
+        ControlMotion motion;
+        motion.inhabit(controls, 4u);
+        std::array<float, 8> v {};
+        for (std::size_t i = 0; i < v.size(); ++i)
+            v[i] = controls[i].value;
+        const float nan = std::numeric_limits<float>::quiet_NaN();
+        for (int frame = 0; frame < 300; ++frame)
+            motion.tick(v, 1.0f / 30.0f, frame % 2 == 0 ? nan : 0.5f, nan, nan);
+        v[0] = nan;
+        motion.tick(v, 1.0f / 30.0f, 0.5f, 0.5f);
+        auto allFinite = true;
+        for (const auto x : v)
+            allFinite = allFinite && std::isfinite(x) && x >= 0.0f && x <= 1.0f;
+        check(allFinite, "NaN readings and a NaN control leave every value finite and in range");
     }
     {
         // the musician's hand: the control re-anchors where it was put

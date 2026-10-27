@@ -55,11 +55,25 @@ As outras escutas da lista A seguem depois da v0.1.0, como melhoria.
 passam (build, 83 testes, pacotes, Universal 2 selado). O Windows passou a
 compilar (`EngineSoakTests` sem POSIX) e os testes que caíam por estouro
 de pilha (o `BiomaEngine` tem ~870 KB) passaram com `/STACK` de 16 MB nos
-executáveis do MSVC; resta o `aquorbium_ambisonic_tests`, que termina com
-0xc0000409 na gravação do arquivo AmbiX (marcas finas em `9c232ea` para
-achar a linha). Dois testes frágeis no macOS arm64 (FMA) foram tornados
-robustos: o período pelas passagens do equilíbrio, o rubato em cinco
-temporadas.
+executáveis do MSVC; o `aquorbium_ambisonic_tests` caía com 0xc0000409
+depois de "reading back" (marcas de `9c232ea`): o teste apagava o WAV com
+o `ifstream` ainda aberto, o Windows recusa, o `remove()` lançava e
+terminava o processo. Corrigido em 2026-10-27 (fecha antes, remoção sem
+exceção); **falta confirmar na próxima CI**. Dois testes frágeis no macOS
+arm64 (FMA) foram tornados robustos: o período pelas passagens do
+equilíbrio, o rubato em cinco temporadas.
+
+**Revisão de bugs (2026-10-27):** suíte com ASan + UBSan
+(`build-asan-20261027`, só núcleo e testes). Achados e corrigidos:
+(1) `resetAutonomousVoice` fazia um temporário de ~140 KB na pilha
+(`autonomousVoice = {}`), estouro sob ASan; agora reconstrói no lugar;
+(2) a partir da segunda abertura semeada, `opening.previousStateV1`
+guardava o mundo da semente anterior, não o do músico; agora só grava
+quando a última abertura não foi semeada (`opening.lastWasSeeded`);
+(3) o VARIA ficava NaN para sempre com uma leitura não finita da
+atividade/tensão; agora troca por neutros (teste novo em
+`OpeningSeedTests`). Nenhum outro relato dos sanitizadores. O código novo
+(semente, VARIA, DecimalText) não toca a thread de áudio.
 
 **Validado localmente (2026-10-26, `1c4b7fb`):** ctest 83/83; auditoria de
 layout nos quatro tamanhos e o editor de síntese em FR e ES; o `.deb`, o

@@ -486,7 +486,11 @@ BiomaEngine::Voice& BiomaEngine::findVoiceFor(int midiNote) noexcept
 
 void BiomaEngine::resetAutonomousVoice() noexcept
 {
-    autonomousVoice = {};
+    // rebuilt in place: "= {}" made a ~140 KB temporary on the stack of
+    // whichever thread prepares (the sanitizer build overflowed there,
+    // 2026-10-27; macOS secondary threads have 512 KB)
+    std::destroy_at(&autonomousVoice);
+    std::construct_at(&autonomousVoice);
     autonomousDcInput.fill(0.0f);
     autonomousDcOutput.fill(0.0f);
     liquidCoefficient.fill(1.0f);
