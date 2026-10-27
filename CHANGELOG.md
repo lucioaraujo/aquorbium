@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 — first public version (in preparation)
+## 0.1.0 — first public version, 2026-10-27
 
 The first public version of the Aquorbium, an audible biome: five sound
 organisms (MORPH, GRAIN, MODAL, PULSAR, STRING) living in a sphere of water.
