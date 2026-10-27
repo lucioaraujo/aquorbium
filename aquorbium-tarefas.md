@@ -481,6 +481,12 @@ Aquorbium, sem código copiado.
         guarda a escolha (`ui.language`).
       Ficam em inglês as leituras técnicas do quadro (BIOENERGY, ENERGY,
       ROOT) e os nomes dos módulos do laboratório.
+      **Confirmado pelo autor em 2026-10-27 ("manter a convenção da
+      família"):** depois de conferir a interface em PT (captura da
+      auditoria com `ui.language = pt`), ficam em inglês LEARN (fixo nas
+      quatro línguas, como no Navalha 2, no Antitotem e no Rasgo Modular),
+      o jargão de estúdio (REC, MASTER, BYPASS, POP, STRIKER), LUFS e TRUE
+      PEAK, as leituras do quadro e os módulos do LAB. Não traduzir.
 - [x] TUTORIAL (`src/app/Tutorial.h`): nove capítulos com DICA, sumário e
       anterior/próximo, nos quatro idiomas.
 - [x] SOBRE: o propósito, os conceitos, as pesquisas citadas, a licença e
