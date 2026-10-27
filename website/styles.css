@@ -175,7 +175,16 @@ figure.shot figcaption { margin-top: .6rem; color: var(--muted); font: .78rem/1.
 .controls caption { text-align: left; padding: 0 0 .4rem; font: 700 .76rem "DejaVu Sans Mono", monospace; color: var(--cyan); letter-spacing: .1em; text-transform: uppercase; }
 .controls th { text-align: left; padding: .55rem .7rem; border: 1px solid var(--line); color: var(--ink); font: 700 .78rem "DejaVu Sans Mono", monospace; letter-spacing: .04em; white-space: nowrap; vertical-align: top; background: var(--surface); }
 /* os seres na página Sobre: quatro parágrafos curtos em cada cartão */
-.organisms { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+/* os cinco numa linha na tela larga (o autor, 2026-10-27: "4 + 1 ficou
+   estranho"); na média, 3 + 2 centralizados; no celular, um por linha */
+.organisms { grid-template-columns: repeat(5, minmax(0, 1fr)); max-width: 1400px; }
+@media (max-width: 1180px) {
+  .organisms { display: flex; flex-wrap: wrap; justify-content: center; }
+  .organisms li { flex: 0 1 calc((100% - 1.6rem) / 3); min-width: 0; }
+}
+@media (max-width: 760px) {
+  .organisms li { flex-basis: 100%; }
+}
 .organisms p { margin: 0 0 .5rem; }
 .organisms strong { color: var(--ink); }
 
