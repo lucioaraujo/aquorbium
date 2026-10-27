@@ -37,6 +37,15 @@ seis pacotes conferem com os botões do site. Depois da release: o site com
 RASGO preparado em `RASGO_WEBSITE/` (sem commit nem envio: revisão do
 autor). Se a escuta abaixo pedir mudanças, elas saem numa v0.1.1.
 
+**O cartão CÉREBRO na tela larga (2026-10-27, escolha do autor):** era só
+a faixa com AUTÔNOMO; os controles RELÓGIO e COORDENAÇÃO ficam no painel
+CONTROLES ECO. A faixa ganhou duas linhas entre o título e o estado
+("RELÓGIO · COORDENAÇÃO / em CONTROLES ECO ›", nas quatro línguas) e um
+clique ali abre o painel (`ModuleCard::setNote`, `NoteLink`,
+`placeBrainNote`). Nas outras telas o cartão CÉREBRO · SALA já mostra os
+dois controles, então sem nota. Conferido nas capturas da auditoria em PT,
+EN, FR e ES; ctest 83/83. Sai na v0.1.1.
+
 **Escuta depois da v0.1.0** (uma sessão de 30–40 min):
 - [ ] abrir o app 3 ou 4 vezes, 3–5 min cada: cada abertura soa diferente?
       alguma é desagradável ou vazia demais? (semente de abertura);

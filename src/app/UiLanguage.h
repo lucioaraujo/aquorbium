@@ -444,6 +444,11 @@ inline const L4 gateTip { "External notes (MIDI, keyboard) gate the biome's ener
                           "Les notes externes (MIDI, clavier) ouvrent l'énergie du biome.",
                           "Las notas externas (MIDI, teclado) liberan la energía del bioma." };
 inline const L4 ecoControls { "ECO CONTROLS", "CONTROLES ECO", "COMMANDES ÉCO", "CONTROLES ECO" };
+// the BRAIN nameplate on the wide surface, where its controls live in ECO
+// CONTROLS (the author's choice, 2026-10-27)
+inline const L4 brainNoteWhat { "CLOCK · COORDINATION", "RELÓGIO · COORDENAÇÃO", "HORLOGE · COORDINATION", "RELOJ · COORDINACIÓN" };
+inline const L4 brainNoteWhere { "in ECO CONTROLS ›", "em CONTROLES ECO ›", "dans COMMANDES ÉCO ›", "en CONTROLES ECO ›" };
+inline const L4 brainNoteTip { "The Brain's CLOCK and COORDINATION are in ECO CONTROLS: click to open them.", "O RELÓGIO e a COORDENAÇÃO do Cérebro ficam em CONTROLES ECO: clique para abri-los.", "L'HORLOGE et la COORDINATION du Cerveau sont dans COMMANDES ÉCO : cliquez pour les ouvrir.", "El RELOJ y la COORDINACIÓN del Cerebro están en CONTROLES ECO: haga clic para abrirlos." };
 inline const L4 aquariumView { "AQUARIUM VIEW", "VER AQUÁRIO", "VUE DE L'AQUARIUM", "VER ACUARIO" };
 inline const L4 sceneNameHint { "Scene name (optional)", "Nome da cena (opcional)", "Nom de la scène (facultatif)", "Nombre de la escena (opcional)" };
 

@@ -248,6 +248,17 @@ public:
             g.setColour(Palette::text);
             g.drawFittedText(title, line, juce::Justification::centredLeft, 1);
             drawLamp(g, pill.toFloat(), 8.5f);
+            if (const auto area = noteBounds(); !area.isEmpty())
+            {
+                // where the card's controls live (the BRAIN, 2026-10-27)
+                auto text = area.reduced(6, 0);
+                g.setFont(uiFont(8.5f, juce::Font::bold));
+                g.setColour(Palette::muted);
+                g.drawFittedText(noteWhat, text.removeFromTop(text.getHeight() / 2),
+                                 juce::Justification::bottomLeft, 1, 0.8f);
+                g.setColour(accent);
+                g.drawFittedText(noteWhere, text, juce::Justification::topLeft, 1, 0.8f);
+            }
             return;
         }
 
@@ -353,6 +364,30 @@ public:
         }
     }
 
+    // two short lines on the nameplate, between the title and the lamp
+    void setNote(juce::String what, juce::String where)
+    {
+        if (noteWhat != what || noteWhere != where)
+        {
+            noteWhat = std::move(what);
+            noteWhere = std::move(where);
+            repaint();
+        }
+    }
+
+    // the note's area on the nameplate (empty when there is no note or no room)
+    [[nodiscard]] juce::Rectangle<int> noteBounds() const
+    {
+        if (!compactHeader || noteWhat.isEmpty())
+            return {};
+        auto line = getLocalBounds().removeFromTop(40).reduced(7, 6).reduced(16, 0);
+        line.removeFromLeft(22);
+        line.removeFromRight(std::min(line.getWidth() / 2, static_cast<int>(status.length()) * 7 + 18) + 6);
+        line.removeFromLeft(juce::roundToInt(juce::GlyphArrangement::getStringWidth(
+            uiFont(13.0f, juce::Font::bold), title)) + 8);
+        return line.getWidth() >= 90 ? line : juce::Rectangle<int> {};
+    }
+
     void setStatus(juce::String next)
     {
         if (status != next)
@@ -368,10 +403,24 @@ private:
     juce::String status;
     juce::String function;
     juce::String detail;
+    juce::String noteWhat, noteWhere;
     juce::Colour accent;
     bool embeddedControls = false;
     bool compactHeader = false;
     bool lit = true;
+};
+
+// a click target over a painted area (the BRAIN's note, 2026-10-27)
+class NoteLink final : public juce::Component, public juce::SettableTooltipClient
+{
+public:
+    NoteLink() { setMouseCursor(juce::MouseCursor::PointingHandCursor); }
+    std::function<void()> onClick;
+    void mouseUp(const juce::MouseEvent& event) override
+    {
+        if (onClick && getLocalBounds().contains(event.getPosition()))
+            onClick();
+    }
 };
 
 struct VisualFrame
@@ -1998,6 +2047,14 @@ public:
                         utf8("O Cérebro e a Sala, quando não cabem no painel de ecologia."), Palette::cyan, true)
     {
         setLookAndFeel(&lookAndFeel);
+        addChildComponent(brainNoteLink);
+        brainNoteLink.onClick = [this] {
+            if (!showEcologyControls)
+            {
+                showEcologyControls = true;
+                updateEcologySurface();
+            }
+        };
         for (auto* component : { static_cast<juce::Component*>(&brainCard),
                                  static_cast<juce::Component*>(&geometryCard),
                                  static_cast<juce::Component*>(&synthesisCard),
@@ -3304,11 +3361,32 @@ public:
             layoutFullSurface();
         else
             layoutCompactSurface();
+        placeBrainNote(wide);
         layoutLearnPanel();
         if (guide.isVisible())
             guide.toFront(false);
         keepSynthEditorOnTop();
         repaint();
+    }
+
+    // On the wide surface the BRAIN card is a nameplate and its CLOCK and
+    // COORDINATION live in ECO CONTROLS: the nameplate says so, and a click
+    // opens them (the author's choice, 2026-10-27). The other surfaces show
+    // them in the BRAIN · ROOM card, so no note there.
+    void placeBrainNote(bool wide)
+    {
+        using namespace aquorbium::app;
+        if (wide)
+            brainCard.setNote(T(S::brainNoteWhat), T(S::brainNoteWhere));
+        else
+            brainCard.setNote({}, {});
+        const auto area = brainCard.noteBounds();
+        brainNoteLink.setVisible(!area.isEmpty());
+        if (area.isEmpty())
+            return;
+        brainNoteLink.setTooltip(T(S::brainNoteTip));
+        brainNoteLink.setBounds(area + brainCard.getPosition());
+        brainNoteLink.toFront(false);
     }
 
     // the layout re-adopts the sound cards and raises the ECO toggle above
@@ -6207,6 +6285,7 @@ private:
     float runtimeAuditPeak = 0.0f, runtimeAuditDelta = 0.0f;
     float runtimeAuditPreviousLeft = 0.0f, runtimeAuditPreviousRight = 0.0f;
     ModuleCard brainCard;
+    NoteLink brainNoteLink;
     ModuleCard geometryCard;
     ModuleCard synthesisCard;
     ModuleCard spaceCard;
