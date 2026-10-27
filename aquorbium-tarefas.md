@@ -27,7 +27,17 @@ instrumentos) e **nenhuma assinatura paga** ("não vou pagar nada"): o macOS
 sai selado ad-hoc e Universal, o Windows sem assinatura, o Linux com
 checksums, e o guia de instalação explica os avisos.
 
-**Escuta que trava a v0.1.0** (uma sessão de 30–40 min):
+**Saiu em 2026-10-27, a pedido do autor ("já faça a versão definitiva"),
+antes da escuta, que fica para depois:** a CI manual `40425836120` verde nos
+três sistemas e no arranque em Debian 12, Ubuntu 24.04, Fedora e Arch
+(confirma a correção do AmbiX no Windows); tag `v0.1.0` no commit
+`8ff3012`; a release é montada pela CI da tag (`40427406679`). Os nomes dos
+seis pacotes conferem com os botões do site. Depois da release: o site com
+`PUBLICADO = True` (sem `noindex`, botões de download); o card no portal
+RASGO preparado em `RASGO_WEBSITE/` (sem commit nem envio: revisão do
+autor). Se a escuta abaixo pedir mudanças, elas saem numa v0.1.1.
+
+**Escuta depois da v0.1.0** (uma sessão de 30–40 min):
 - [ ] abrir o app 3 ou 4 vezes, 3–5 min cada: cada abertura soa diferente?
       alguma é desagradável ou vazia demais? (semente de abertura);
 - [ ] numa delas, deixar o VARIA uns 5 min: o movimento é musical? demais ou

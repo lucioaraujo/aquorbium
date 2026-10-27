@@ -24,7 +24,7 @@ BLOB = "https://github.com/lucioaraujo/aquorbium/blob/main"
 VERSAO = "0.1.0"
 # enquanto a v0.1.0 não sai: noindex e o selo "em preparação"; os botões
 # levam à página de releases. No lançamento: PUBLICADO = True.
-PUBLICADO = False
+PUBLICADO = True
 RELEASES = REPO + "/releases"
 DL = REPO + "/releases/download/v" + VERSAO + "/"
 PACOTES = [
