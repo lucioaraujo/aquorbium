@@ -6654,7 +6654,7 @@ private:
         // OUTPUT TRIM) e SILENCIAR. Fora disso: recusado.
         h.mixerList = [this](std::vector<rasgo::maestruc::MixerChannel>& channels) {
             channels.push_back({ -1, "MASTER", static_cast<float>(-18.0 + masterTrim.getValue() * 24.0),
-                                 muteButton.getToggleState(), false });
+                                 muteButton.getToggleState(), false, "nivel,mudo", -18.0f, 6.0f });
         };
         h.mixerSet = [this](int index, const juce::String& what, float value) {
             if (index != -1)
