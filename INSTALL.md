@@ -142,7 +142,8 @@ development packages. The workflow `.github/workflows/package.yml` lists them.
 
 ### Status
 
-Version 0.1.0 is the first public version. The Windows and macOS packages are
+Version 0.2.0 is the current version (0.1.0 was the first public one). The
+Windows and macOS packages are
 built, tested and checked by continuous integration: no dependency on the
 Visual C++ Redistributable, and a sealed Universal 2 bundle on macOS. They
 have not yet been opened by the author on real Windows and Mac machines.
@@ -286,7 +287,8 @@ a lista.
 
 ### Estado
 
-A versão 0.1.0 é a primeira versão pública. Os pacotes de Windows e macOS são
+A versão 0.2.0 é a atual (a 0.1.0 foi a primeira pública). Os pacotes de
+Windows e macOS são
 construídos, testados e conferidos pela integração contínua: sem dependência
 do Visual C++ Redistributable, e um pacote Universal 2 selado no macOS. Ainda
 não foram abertos pelo autor em Windows e Mac reais.
@@ -439,7 +441,8 @@ d'ALSA, FreeType, Fontconfig, X11 et GTK. Le flux
 
 ### État
 
-La version 0.1.0 est la première version publique. Les paquets Windows et
+La version 0.2.0 est la version actuelle (la 0.1.0 fut la première publique).
+Les paquets Windows et
 macOS sont construits, testés et vérifiés par l'intégration continue : sans
 dépendance au Visual C++ Redistributable, et un paquet Universal 2 scellé sur
 macOS. Ils n'ont pas encore été ouverts par l'auteur sur de vrais Windows et
@@ -586,7 +589,8 @@ trae la lista.
 
 ### Estado
 
-La versión 0.1.0 es la primera versión pública. Los paquetes de Windows y
+La versión 0.2.0 es la actual (la 0.1.0 fue la primera pública). Los
+paquetes de Windows y
 macOS los construye, prueba y verifica la integración continua: sin
 dependencia del Visual C++ Redistributable, y un paquete Universal 2 sellado
 en macOS. El autor aún no los ha abierto en Windows y Mac reales.

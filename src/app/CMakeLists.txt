@@ -11,7 +11,7 @@ juce_generate_juce_header(AquorbiumApp)
 target_sources(AquorbiumApp PRIVATE Main.cpp WindowLayoutPolicy.h EcologyParameterState.h
     PerformanceParameterState.h AudioControlFrame.h PerformancePresetBank.h EcologyPanelLayout.h
     PerformanceSceneFile.h PerformanceSceneControls.h ParameterXml.h MacroPanelLayout.h OrganismLabelLayout.h
-    RuntimeAuditProtocol.h DiagnosticAudioCapture.h)
+    RuntimeAuditProtocol.h DiagnosticAudioCapture.h MaestrucLink.h PonteDeSom.h)
 target_compile_features(AquorbiumApp PRIVATE cxx_std_20)
 if (MSVC)
     target_compile_options(AquorbiumApp PRIVATE /utf-8)
@@ -23,6 +23,7 @@ target_link_libraries(AquorbiumApp PRIVATE
     AquorbiumIdentity
     juce::juce_audio_utils
     juce::juce_data_structures
+    juce::juce_osc   # receptor do Maestruc (MaestrucLink.h), 15/11/2026
     juce::juce_recommended_config_flags
     juce::juce_recommended_warning_flags)
 target_compile_definitions(AquorbiumApp PRIVATE

@@ -45,6 +45,7 @@ fixada, com proveniência, adaptada aos conceitos do instrumento.
 | detector de true peak (ITU-R BS.1770-4, anexo 2) | Navalha 2, `b5343c4` (GPL-3.0-or-later, o mesmo autor) | `src/core/TruePeakDetector.*` |
 | os núcleos de síntese: oscilador PolyBLEP, filtro de estado variável TPT, operadores FM, wavetable, aditiva, formantes | Rasgo Modular `4ce898f` (AGPLv3, o mesmo autor), com checksums no código | `src/core/SynthVoice.h`, `src/core/SynthSources.*` |
 | os scripts Linux e o fluxo da CI | Trioio `383c009` (vindos do Antitotem `6c88ab4`) | `packaging/`, `.github/workflows/` |
+| o receptor do Maestruc (canal `maestruc.link/1`, ponte de som, senha), 15/11/2026 | Maestruc, `receptor/` do monorepo privado `rasgo-instruments` (AGPL-3.0-or-later, o mesmo autor); origem e SHA-256 no cabeçalho de cada arquivo | `src/app/MaestrucLink.h`, `src/app/PonteDeSom.h` |
 
 **Conceitos reescritos, sem código copiado:**
 

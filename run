@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 set -e
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
-app=./build-reactivation-20260915/src/app/AquorbiumApp_artefacts/Release/Aquorbium
+# build/ é a pasta do INSTALL.md (15/11/2026); a antiga
+# build-reactivation-20260915 ficou presa ao caminho de antes da mudança de
+# lugar do projeto e só serve de reserva.
+app=./build/src/app/AquorbiumApp_artefacts/Release/Aquorbium
+[[ -x "$app" ]] || app=./build-reactivation-20260915/src/app/AquorbiumApp_artefacts/Release/Aquorbium
 if [[ ! -x "$app" ]]; then
-    printf 'Aquorbium não compilado. Execute: cmake --build build-reactivation-20260915 --target AquorbiumApp --parallel 1\n' >&2
+    printf 'Aquorbium não compilado. Execute: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DAQUORBIUM_JUCE_PATH=<JUCE> && cmake --build build --target AquorbiumApp --parallel 2\n' >&2
     exit 1
 fi
 if [[ "${1:-}" == diagnostico ]]; then

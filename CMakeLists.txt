@@ -16,7 +16,7 @@ if (APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "minimum macOS" FORCE)
     set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "Universal 2" FORCE)
 endif()
-project(Aquorbium VERSION 0.1.0 LANGUAGES C CXX)
+project(Aquorbium VERSION 0.2.0 LANGUAGES C CXX)
 
 # MSVC: M_PI and the other <cmath> constants only with _USE_MATH_DEFINES, and
 # no min/max macros from <windows.h> (the Trioio's CI stopped on both)

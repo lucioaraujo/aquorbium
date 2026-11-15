@@ -23,6 +23,9 @@
 #include "core/BiomaEngine.h"
 #include "core/ControlMotion.h"
 #include "core/OpeningSeed.h"
+#include "MaestrucLink.h"
+
+#include <cstdio>
 #include "core/DeliveryProfiles.h"
 #include "core/FixedMpscQueue.h"
 #include "core/FixedLatestSnapshot.h"
@@ -2006,6 +2009,17 @@ private:
     juce::String title, body, explore;
 };
 
+// Opções de abertura vindas de fora (Maestruc, 15/11/2026): --seed N abre a
+// sessão com essa seed sem gravá-la como fixa; --maestruc (ou
+// AQUORBIUM_MAESTRUC=1) liga o receptor maestruc.link/1. Lidas em initialise
+// antes de a janela nascer.
+struct LaunchOptions
+{
+    std::uint32_t seed = 0;   // 0 = a de sempre (fixa nas preferências ou sorteada)
+    bool maestruc = false;
+};
+inline LaunchOptions& launchOptions() { static LaunchOptions o; return o; }
+
 class MainComponent final : public juce::AudioAppComponent,
                             private juce::MidiInputCallback,
                             private juce::Timer
@@ -2256,6 +2270,7 @@ public:
         muteButton.onClick = [this] {
             const auto on = muteButton.getToggleState();
             muteRequested.store(on, std::memory_order_relaxed);
+            maestrucMixerDirty = true;
             muteButton.setButtonText(on ? aquorbium::app::T(aquorbium::app::S::unmute) : aquorbium::app::T(aquorbium::app::S::mute));
         };
         addAndMakeVisible(pauseButton);
@@ -2571,6 +2586,7 @@ public:
                 if (previous)
                     previous();
                 headerVolume.setValue(masterTrim.getValue(), juce::dontSendNotification);
+                maestrucMixerDirty = true;
             };
         }
         headerVolumeLabel.setFont(uiFont(9.5f, juce::Font::bold));
@@ -2592,7 +2608,8 @@ public:
         if (startAudio)
         {
             const auto fixed = settings.getIntValue("session.fixedSeed", 0);
-            sessionSeed = fixed > 0 ? static_cast<std::uint32_t>(fixed)
+            sessionSeed = launchOptions().seed > 0 ? launchOptions().seed
+                        : fixed > 0 ? static_cast<std::uint32_t>(fixed)
                                     : static_cast<std::uint32_t>(juce::Random::getSystemRandom().nextInt(0x7ffffffe)) + 1u;
             settings.setValue("session.lastSeed", static_cast<int>(sessionSeed));
         }
@@ -2622,6 +2639,9 @@ public:
                 settings.setValue("opening.lastWasSeeded", false);
             variaAllowed = true;
             inhabitMotion();
+            if (launchOptions().maestruc
+                || juce::SystemStats::getEnvironmentVariable("AQUORBIUM_MAESTRUC", {}) == "1")
+                enableMaestrucLink();
             const auto room = settings.getBoolValue("room.enabled", false);
             ecosystemView.setRoom(room);
             setAudioChannels(room ? 1 : 0, 2, audioState.get());
@@ -2650,6 +2670,7 @@ public:
 
     ~MainComponent() override
     {
+        maestrucPortao.fecharEsperar();   // o áudio deixa de usar a ponte do Maestruc
         stopTimer();
         // Persist device configuration on the GUI thread, before closing it.
         if (const auto state = deviceManager.createStateXml())
@@ -2707,6 +2728,13 @@ public:
         audioControls.apply(engine, true);
         static_cast<void>(synthFrames.consumeLatest(audioSynth));
         applySynthToEngine();
+        // Ponte do Maestruc: reabre na taxa nova pelo fio de mensagens (até
+        // lá, o Aquorbium toca nas próprias caixas).
+        maestrucPortao.fecharEsperar();
+        juce::MessageManager::callAsync([safe = juce::Component::SafePointer<MainComponent>(this)] {
+            if (safe != nullptr)
+                safe->openMaestrucBridge();
+        });
     }
 
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) override
@@ -2857,6 +2885,13 @@ public:
             juce::Time::getHighResolutionTicks() - started);
         if (elapsed > static_cast<double>(info.numSamples) / preparedRate)
             overBudgetCounter.fetch_add(1, std::memory_order_relaxed);
+        // Maestruc: a mistura vai pela ponte (gravações e medidas acima ficam
+        // iguais); enquanto ele lê, o Aquorbium cala a própria saída.
+        {
+            const float* const bridge[2] { left, right };
+            if (maestrucPortao.escrever(bridge, 2, info.numSamples))
+                info.clearActiveBufferRegion();
+        }
         audioCallbackCounter.fetch_add(1, std::memory_order_relaxed);
     }
 
@@ -4820,6 +4855,11 @@ private:
 
     void timerCallback() override
     {
+        if (maestrucMixerDirty && maestrucLink != nullptr)
+        {
+            maestrucMixerDirty = false;
+            maestrucLink->mixerChanged();
+        }
         const auto guiTick = juce::Time::getHighResolutionTicks();
         if (lastGuiTick != 0 && juce::Time::highResolutionTicksToSeconds(guiTick - lastGuiTick) > 0.250)
             ++guiPauseCounter;
@@ -6583,6 +6623,76 @@ private:
     aquorbium::FixedLatestSnapshot<SynthFrame> synthFrames;  // the synthesis device, GUI -> audio
     SynthFrame audioSynth {};                                 // audio-owned copy
     aquorbium::app::AudioControlFrame audioControls; // audio owner only
+
+    // Maestruc (maestruc.link/1, 15/11/2026): o regente da família pode pausar
+    // e continuar (o mesmo botão PAUSA) e saber o estado e a seed da sessão.
+    // A seed só entra ao abrir (--seed): o mundo da sessão nasce dela antes do
+    // áudio e não muda com o app aberto, então "seed" responde capacidade
+    // ausente. Último membro: é o primeiro a ser desfeito, antes de tudo que
+    // os handlers usam.
+    void enableMaestrucLink()
+    {
+        if (maestrucLink != nullptr)
+            return;
+        maestrucLink = std::make_unique<rasgo::maestruc::Link>("Aquorbium", JUCE_APPLICATION_VERSION_STRING);
+        auto& h = maestrucLink->handlers;
+        h.play = [this](juce::int64) {
+            if (pauseButton.getToggleState())
+                pauseButton.setToggleState(false, juce::sendNotificationSync);
+        };
+        h.stop = [this] {
+            if (!pauseButton.getToggleState())
+                pauseButton.setToggleState(true, juce::sendNotificationSync);
+        };
+        h.state = [this](bool& playing, juce::String& seed, float& bpm) {
+            playing = !pauseRequested.load(std::memory_order_relaxed);
+            seed = juce::String(static_cast<juce::int64>(sessionSeed));
+            bpm = 0.0f;   // o andamento é do ecossistema, não um relógio comum
+        };
+        // Mixer: o Aquorbium não tem mesa por canal; o Maestruc vê o master
+        // (índice −1): o volume de saída (−18…+6 dB, o mesmo do cabeçalho e do
+        // OUTPUT TRIM) e SILENCIAR. Fora disso: recusado.
+        h.mixerList = [this](std::vector<rasgo::maestruc::MixerChannel>& channels) {
+            channels.push_back({ -1, "MASTER", static_cast<float>(-18.0 + masterTrim.getValue() * 24.0),
+                                 muteButton.getToggleState(), false });
+        };
+        h.mixerSet = [this](int index, const juce::String& what, float value) {
+            if (index != -1)
+                return false;
+            if (what == "nivel")
+            {
+                if (value < -18.0f || value > 6.0f)
+                    return false;
+                masterTrim.setValue((value + 18.0) / 24.0, juce::sendNotificationSync);
+                return true;
+            }
+            if (what == "mudo")
+            {
+                if (muteButton.getToggleState() != (value > 0.5f))
+                    muteButton.setToggleState(value > 0.5f, juce::sendNotificationSync);
+                return true;
+            }
+            return false;   // solo: não há outros canais
+        };
+        if (!maestrucLink->start())
+        {
+            maestrucLink.reset();
+            return;
+        }
+        openMaestrucBridge();
+    }
+    // Fio de mensagens. A ponte leva a mistura (um par estéreo) na taxa da placa.
+    void openMaestrucBridge()
+    {
+        maestrucPortao.fecharEsperar();
+        if (maestrucLink == nullptr || preparedRate <= 0.0)
+            return;
+        if (maestrucLink->openSoundBridge(1, preparedRate, { "mix" }))
+            maestrucPortao.abrir(maestrucLink.get());
+    }
+    bool maestrucMixerDirty = false;
+    rasgo::maestruc::PortaoDeSom maestrucPortao;
+    std::unique_ptr<rasgo::maestruc::Link> maestrucLink;
 };
 
 class ResponsiveShell final : public juce::Component
@@ -6765,7 +6875,19 @@ public:
         unsigned captureSeconds = 120;
         bool captureSecondsProvided = false;
         bool runtimeStress = false;
-        for (const auto& rawArgument : juce::StringArray::fromTokens(commandLine, true))
+        const auto arguments = juce::StringArray::fromTokens(commandLine, true);
+        // Maestruc (15/11/2026): --seed N (inteiro de 1 a 2147483646) e --maestruc.
+        if (const int i = arguments.indexOf("--seed"); i >= 0 && i + 1 < arguments.size())
+        {
+            const auto value = arguments[i + 1].unquoted();
+            const auto n = value.getLargeIntValue();
+            if (value.containsOnly("0123456789") && n >= 1 && n <= 0x7ffffffe)
+                launchOptions().seed = static_cast<std::uint32_t>(n);
+            else
+                std::fprintf(stderr, "Aquorbium: --seed precisa de um inteiro de 1 a 2147483646\n");
+        }
+        launchOptions().maestruc = arguments.contains("--maestruc");
+        for (const auto& rawArgument : arguments)
         {
             const auto argument = rawArgument.unquoted();
             if (argument.startsWith(validationPrefix))

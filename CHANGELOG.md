@@ -1,5 +1,36 @@
 # Changelog
 
+## Unreleased
+
+- **Maestruc receiver** (the RASGO family's conductor, protocol
+  `maestruc.link/1`, local OSC only): with `--maestruc` or
+  `AQUORBIUM_MAESTRUC=1`, Maestruc can pause and resume the biome (the same
+  PAUSE button) and read its state and session seed. Off by default:
+  without the option nothing changes. Seed and tempo while open answer
+  "capability absent": the session's world is born from the seed before the
+  audio starts, and the tempo belongs to the ecosystem. Copy of
+  `MAESTRUC/receptor/MaestrucLink.h`; `juce_osc` module in the app.
+- **Sound bridge to Maestruc** (Windows, macOS and Linux, no virtual audio
+  driver): with `--maestruc`, the mix goes to Maestruc through a shared-memory
+  file only the user can read; while Maestruc is reading, the Aquorbium
+  silences its own output (no double sound) and, if Maestruc closes or stops,
+  plays on its own again within about half a second. Takes, stems,
+  Ambisonics and the diagnostic capture are unchanged. Bridges left by an
+  instrument that was killed are removed the next time one opens. Copy of
+  `MAESTRUC/receptor/PonteDeSom.h`.
+- **Master from Maestruc:** the output volume (−18 to +6 dB, the same as the
+  header volume and OUTPUT TRIM) and SILENCE; the Aquorbium has no per-channel
+  mixer, so only the master is offered. Changes made by hand are sent back.
+- **Session password:** Maestruc's commands are only accepted with the
+  password it writes to a file only the user can read.
+- **`--seed N`** (1 to 2147483646) opens the session with that seed without
+  saving it as fixed (`session.fixedSeed` keeps its meaning).
+- **JUCE 9.0.3** for local builds too (the CI already used it; the local
+  build was on 9.0.1).
+- `./run` opens `build/` (the folder in INSTALL.md); the older
+  `build-reactivation-20260915` no longer configures after the project
+  moved and stays only as a fallback.
+
 ## 0.1.0 — first public version, 2026-10-27
 
 The first public version of the Aquorbium, an audible biome: five sound
