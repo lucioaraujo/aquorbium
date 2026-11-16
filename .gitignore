@@ -8,3 +8,7 @@ validation-output/
 biome.odt
 .codex/
 .agents/
+
+# caches do Python (geração do site)
+__pycache__/
+*.pyc
