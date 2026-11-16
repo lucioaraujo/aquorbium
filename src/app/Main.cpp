@@ -14,6 +14,7 @@
 #include "AmbisonicCapture.h"
 #include "RealtimeAudioThread.h"
 #include "DiagnosticAudioCapture.h"
+#include "StreamingVersion.h"   // a versão de entrega (16/11/2026)
 #include "EcologyParameterState.h"
 #include "PerformanceParameterState.h"
 #include "WindowLayoutPolicy.h"
@@ -5554,6 +5555,13 @@ private:
         text
              << "\ncontrols_at_start=\n" << recordingControls << "\n";
         static_cast<void>(recordingFile.withFileExtension("txt").replaceWithText(text));
+        // Versão de entrega (16/11/2026, saida-ref 1.1; o autor: "nivele todos os
+        // instrumentos para que fiquem preparados para os spotifys da vida"):
+        // <tomada>_streaming.wav a -14 LUFS / <= -1 dBTP e um .txt, ao lado da
+        // tomada, num fio próprio. O relatório acima segue dizendo o que cada
+        // destino faria com a tomada crua; o som ao vivo não muda.
+        if (!failed && recordingFile.existsAsFile())
+            streamingPool.addJob([take = recordingFile] { writeStreamingVersion(take); });
         recordingNotice(failed ? aquorbium::app::T(aquorbium::app::S::recFailed)
                                : aquorbium::app::T(aquorbium::app::S::recSaved) + recordingFile.getFileName() + utf8(" · ")
                                      + juce::String(measured.integratedLufs, 1) + " LUFS" + utf8(" · ")
@@ -6261,6 +6269,8 @@ private:
     juce::StringArray stemFiles;
     std::atomic<aquorbium::app::DiagnosticAudioCapture*> recorderForAudio { nullptr };
     juce::File recordingFile;
+    // a versão de entrega da última tomada (16/11/2026); o destrutor espera por ela
+    juce::ThreadPool streamingPool { juce::ThreadPoolOptions {}.withThreadName("Aquorbium streaming master").withNumberOfThreads(1) };
     juce::Time recordingStart;
     juce::String recordingControls;
     unsigned recordingBits = 32;

@@ -76,6 +76,7 @@ add_library(aquorbium_core STATIC
     src/core/SynthSources.cpp
     src/core/TruePeakDetector.cpp
     src/core/TakeAnalysis.cpp
+    src/core/DeliveryMaster.cpp
     src/core/AquariumPose.cpp
     src/core/AquariumSpatializer.cpp
     src/core/BiomaBrain.cpp
