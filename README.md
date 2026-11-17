@@ -24,7 +24,7 @@ not play notes: you play the environment, and listen to what the life inside
 makes of it.
 
 **Authorship:** Lúcio de Araújo · **Family:** [RASGO](https://rasgoinstruments.arquiviagem.net/) ·
-**Version:** v0.2.0 · **License:** GNU AGPL-3.0-or-later (see
+**Version:** v0.2.2 · **License:** GNU AGPL-3.0-or-later (see
 [`LICENSE-AGPL-3.0.txt`](LICENSE-AGPL-3.0.txt) and
 [`CREDITS_AND_SOURCES.md`](CREDITS_AND_SOURCES.md))
 
@@ -95,7 +95,7 @@ cantam. Você não toca notas: toca o ambiente, e escuta o que a vida lá
 dentro faz com ele.
 
 **Autoria:** Lúcio de Araújo · **Família:** [RASGO](https://rasgoinstruments.arquiviagem.net/) ·
-**Versão:** v0.2.0 · **Licença:** GNU AGPL-3.0-or-later (ver
+**Versão:** v0.2.2 · **Licença:** GNU AGPL-3.0-or-later (ver
 [`LICENSE-AGPL-3.0.txt`](LICENSE-AGPL-3.0.txt) e
 [`CREDITS_AND_SOURCES.md`](CREDITS_AND_SOURCES.md))
 
@@ -166,7 +166,7 @@ meurent, et chantent. Vous ne jouez pas de notes : vous jouez
 l'environnement, et écoutez ce que la vie à l'intérieur en fait.
 
 **Auteur :** Lúcio de Araújo · **Famille :** [RASGO](https://rasgoinstruments.arquiviagem.net/) ·
-**Version :** v0.2.0 · **Licence :** GNU AGPL-3.0-or-later (voir
+**Version :** v0.2.2 · **Licence :** GNU AGPL-3.0-or-later (voir
 [`LICENSE-AGPL-3.0.txt`](LICENSE-AGPL-3.0.txt) et
 [`CREDITS_AND_SOURCES.md`](CREDITS_AND_SOURCES.md))
 
@@ -240,7 +240,7 @@ no toca notas: toca el ambiente, y escucha lo que la vida de dentro hace con
 él.
 
 **Autoría:** Lúcio de Araújo · **Familia:** [RASGO](https://rasgoinstruments.arquiviagem.net/) ·
-**Versión:** v0.2.0 · **Licencia:** GNU AGPL-3.0-or-later (ver
+**Versión:** v0.2.2 · **Licencia:** GNU AGPL-3.0-or-later (ver
 [`LICENSE-AGPL-3.0.txt`](LICENSE-AGPL-3.0.txt) y
 [`CREDITS_AND_SOURCES.md`](CREDITS_AND_SOURCES.md))
 
