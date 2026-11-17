@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- **Streaming version at −14 LUFS** (saida-ref 1.1, the family's common
+  technical output): next to each recording, `_streaming.wav` (−14 LUFS, true
+  peak ≤ −1 dBTP, 24-bit PCM with TPDF) and a `.txt` with the measurements,
+  made offline on a thread of its own. The live sound and the raw recording
+  do not change. Dynamics guard: the limiter never takes more than 6 dB; a
+  take too dynamic for that stays under −14 and the `.txt` says why.
+  The recording report keeps saying what each delivery profile would do to
+  the raw take.
+
+## 0.2.0 — 2026-11-16
+
 - **Maestruc receiver** (the RASGO family's conductor, protocol
   `maestruc.link/1`, local OSC only): with `--maestruc` or
   `AQUORBIUM_MAESTRUC=1`, Maestruc can pause and resume the biome (the same
