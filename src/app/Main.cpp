@@ -2684,6 +2684,11 @@ public:
         shutdownAudio();
         if (recorder != nullptr)
             finishRecording();
+        // A versão de entrega em curso (ou na fila) termina antes de sair
+        // (17/11/2026): o destrutor do juce::ThreadPool só espera 5 s e depois
+        // mata o fio à força; removeAllJobs descarta o que ainda está na fila.
+        while (streamingPool.getNumJobs() > 0)
+            juce::Thread::sleep(20);
         if (diagnosticCapture != nullptr && !captureFinalized)
             finishInteractiveCapture();
         savePerformanceState();
