@@ -347,7 +347,7 @@ T = {
         "strip": "RASGO — família de instrumentos e pesquisa sonora",
         "skip": "Pular para o conteúdo",
         "langnav": "Idioma",
-        "pill_pub": "Versão 0.1.0 — para Windows, macOS e Linux",
+        "pill_pub": "Versão %s — para Windows, macOS e Linux",
         "pill_prep": "Em preparação — versão 0.1.0 para Windows, macOS e Linux",
         "lead": "Cinco organismos sonoros vivem numa esfera de água. Eles se veem e se ouvem através da água, caçam, fogem, cortejam, defendem território, nascem e morrem, e cantam. Você não toca notas: toca o ambiente, e escuta o que a vida lá dentro faz com ele.",
         "sonar_label": "Um sonar desenhado ao vivo: o feixe gira e os cinco organismos nadam na esfera.",
@@ -405,7 +405,7 @@ T = {
         "credits": "Lúcio de Araújo — concepção, composição, escuta e código. Os conceitos vêm da ecoacústica e da bioacústica (Krause, Schafer, os estudos dos cantos de baleias e golfinhos), da física do som na água e da teoria musical; nenhum código, som ou texto dessas obras foi copiado. Licença GNU AGPLv3 ou posterior; JUCE sob a via AGPLv3. Fontes e créditos completos:",
         "credits_link": "CREDITS_AND_SOURCES.md",
         "s_state": "Estado",
-        "state_pub": "A versão 0.1.0 é a primeira versão pública. Os pacotes de Windows e macOS são construídos e testados pela integração contínua; o instrumento continua em desenvolvimento, aberto.",
+        "state_pub": "A versão %s é a atual; a primeira versão pública foi a 0.1.0, em outubro de 2026. Os pacotes de Windows e macOS são construídos e testados pela integração contínua; o instrumento continua em desenvolvimento, aberto.",
         "state_prep": "O Aquorbium está se preparando para a primeira versão pública. O código já está aberto no GitHub.",
         "contact": "Contato",
         "footer_credits": "Créditos",
@@ -423,7 +423,7 @@ T = {
         "strip": "RASGO — a family of instruments and sound research",
         "skip": "Skip to content",
         "langnav": "Language",
-        "pill_pub": "Version 0.1.0 — for Windows, macOS and Linux",
+        "pill_pub": "Version %s — for Windows, macOS and Linux",
         "pill_prep": "In preparation — version 0.1.0 for Windows, macOS and Linux",
         "lead": "Five sound organisms live in a sphere of water. They see and hear each other through the water, hunt, flee, court, defend territory, are born and die, and sing. You do not play notes: you play the environment, and listen to what the life inside makes of it.",
         "sonar_label": "A sonar drawn live: the beam turns and the five organisms swim in the sphere.",
@@ -481,7 +481,7 @@ T = {
         "credits": "Lúcio de Araújo — concept, composition, listening and code. The concepts come from ecoacoustics and bioacoustics (Krause, Schafer, the studies of whale and dolphin song), the physics of sound in water and music theory; no code, sound or text of these works was copied. Licence GNU AGPLv3 or later; JUCE under AGPLv3. Full sources and credits:",
         "credits_link": "CREDITS_AND_SOURCES.md",
         "s_state": "Status",
-        "state_pub": "Version 0.1.0 is the first public version. The Windows and macOS packages are built and tested by continuous integration; the instrument is still in development, open.",
+        "state_pub": "Version %s is the current one; the first public version was 0.1.0, in October 2026. The Windows and macOS packages are built and tested by continuous integration; the instrument is still in development, open.",
         "state_prep": "The Aquorbium is getting ready for its first public version. The code is already open on GitHub.",
         "contact": "Contact",
         "footer_credits": "Credits",
@@ -499,7 +499,7 @@ T = {
         "strip": "RASGO — famille d'instruments et de recherche sonore",
         "skip": "Aller au contenu",
         "langnav": "Langue",
-        "pill_pub": "Version 0.1.0 — pour Windows, macOS et Linux",
+        "pill_pub": "Version %s — pour Windows, macOS et Linux",
         "pill_prep": "En préparation — version 0.1.0 pour Windows, macOS et Linux",
         "lead": "Cinq organismes sonores vivent dans une sphère d'eau. Ils se voient et s'entendent à travers l'eau, chassent, fuient, paradent, défendent un territoire, naissent et meurent, et chantent. Vous ne jouez pas de notes : vous jouez l'environnement, et écoutez ce que la vie à l'intérieur en fait.",
         "sonar_label": "Un sonar dessiné en direct : le faisceau tourne et les cinq organismes nagent dans la sphère.",
@@ -557,7 +557,7 @@ T = {
         "credits": "Lúcio de Araújo — conception, composition, écoute et code. Les concepts viennent de l'écoacoustique et de la bioacoustique (Krause, Schafer, les études des chants de baleines et de dauphins), de la physique du son dans l'eau et de la théorie musicale ; aucun code, son ou texte de ces œuvres n'a été copié. Licence GNU AGPLv3 ou ultérieure ; JUCE sous AGPLv3. Sources et crédits complets :",
         "credits_link": "CREDITS_AND_SOURCES.md",
         "s_state": "État",
-        "state_pub": "La version 0.1.0 est la première version publique. Les paquets Windows et macOS sont construits et testés par l'intégration continue ; l'instrument reste en développement, ouvert.",
+        "state_pub": "La version %s est l'actuelle ; la première version publique était la 0.1.0, en octobre 2026. Les paquets Windows et macOS sont construits et testés par l'intégration continue ; l'instrument reste en développement, ouvert.",
         "state_prep": "L'Aquorbium se prépare à sa première version publique. Le code est déjà ouvert sur GitHub.",
         "contact": "Contact",
         "footer_credits": "Crédits",
@@ -575,7 +575,7 @@ T = {
         "strip": "RASGO — familia de instrumentos e investigación sonora",
         "skip": "Saltar al contenido",
         "langnav": "Idioma",
-        "pill_pub": "Versión 0.1.0 — para Windows, macOS y Linux",
+        "pill_pub": "Versión %s — para Windows, macOS y Linux",
         "pill_prep": "En preparación — versión 0.1.0 para Windows, macOS y Linux",
         "lead": "Cinco organismos sonoros viven en una esfera de agua. Se ven y se oyen a través del agua, cazan, huyen, cortejan, defienden territorio, nacen y mueren, y cantan. Usted no toca notas: toca el ambiente, y escucha lo que la vida de dentro hace con él.",
         "sonar_label": "Un sonar dibujado en vivo: el haz gira y los cinco organismos nadan en la esfera.",
@@ -633,7 +633,7 @@ T = {
         "credits": "Lúcio de Araújo — concepción, composición, escucha y código. Los conceptos vienen de la ecoacústica y la bioacústica (Krause, Schafer, los estudios de los cantos de ballenas y delfines), de la física del sonido en el agua y de la teoría musical; no se copió ningún código, sonido ni texto de esas obras. Licencia GNU AGPLv3 o posterior; JUCE bajo AGPLv3. Fuentes y créditos completos:",
         "credits_link": "CREDITS_AND_SOURCES.md",
         "s_state": "Estado",
-        "state_pub": "La versión 0.1.0 es la primera versión pública. Los paquetes de Windows y macOS los construye y prueba la integración continua; el instrumento sigue en desarrollo, abierto.",
+        "state_pub": "La versión %s es la actual; la primera versión pública fue la 0.1.0, en octubre de 2026. Los paquetes de Windows y macOS los construye y prueba la integración continua; el instrumento sigue en desarrollo, abierto.",
         "state_prep": "El Aquorbium se prepara para su primera versión pública. El código ya está abierto en GitHub.",
         "contact": "Contacto",
         "footer_credits": "Créditos",
@@ -749,7 +749,7 @@ def pagina_sobre(lang):
     return (cabeca(lang, t["title"], t["desc"], ["contact.js", "sonar.js"]) + cabecalho(lang, "sobre") + f"""<main id="conteudo">
 <section class="hero" id="top">
   <div class="hero-text">
-    <span class="status-pill">{e(t["pill_pub"] if PUBLICADO else t["pill_prep"])}</span>
+    <span class="status-pill">{e(t["pill_pub"] % VERSAO if PUBLICADO else t["pill_prep"])}</span>
     <h1>Aquorbium</h1>
     <p class="lead">{e(t["lead"])}</p>
     <div class="contact-row">
@@ -828,7 +828,7 @@ def pagina_sobre(lang):
 
 <section class="section">
   <h2>{e(t["s_state"])}</h2>
-  <p>{e(t["state_pub"] if PUBLICADO else t["state_prep"])}</p>
+  <p>{e(t["state_pub"] % VERSAO if PUBLICADO else t["state_prep"])}</p>
   <div class="contact-row">
     <button type="button" class="button button-primary" data-contact-trigger>{e(t["contact"])}</button>
     <a class="button" href="{REPO}">GitHub</a>
