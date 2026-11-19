@@ -666,6 +666,8 @@ def cabeca(lang, titulo, descricao, scripts):
 <title>{e(titulo)}</title>
 <meta name="description" content="{a(descricao)}" />
 {robots}<link rel="icon" href="assets/identity/aquorbium-favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="assets/identity/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="assets/identity/apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.css" />
 {js}</head>
 <body>
