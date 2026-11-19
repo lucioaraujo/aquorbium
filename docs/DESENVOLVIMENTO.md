@@ -18,7 +18,7 @@ Atualização documental: 2026-10-22.
 
 **Identificador arquivístico:** `ARQ-AQU-001`
 **Estado:** desenvolvimento local; app standalone e core ativos, sem release congelada.
-**Licença:** GNU AGPL 3.0 ou posterior ([LICENSE-AGPL-3.0.txt](../LICENSE-AGPL-3.0.txt)).
+**Licença:** GNU AGPL 3.0 ou posterior ([LICENSE](../LICENSE)).
 Cada arquivo-fonte começa com `SPDX-License-Identifier: AGPL-3.0-or-later` e
 `Copyright (C) 2026 Lúcio de Araújo`. O teste `aquorbium_license_headers`
 exige esse cabeçalho, inclusive em arquivos novos.

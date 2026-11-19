@@ -25,7 +25,7 @@ makes of it.
 
 **Authorship:** Lúcio de Araújo · **Family:** [RASGO](https://rasgoinstruments.arquiviagem.net/) ·
 **Version:** v0.2.2 · **License:** GNU AGPL-3.0-or-later (see
-[`LICENSE-AGPL-3.0.txt`](LICENSE-AGPL-3.0.txt) and
+[`LICENSE`](LICENSE) and
 [`CREDITS_AND_SOURCES.md`](CREDITS_AND_SOURCES.md))
 
 ### What it is
@@ -96,7 +96,7 @@ dentro faz com ele.
 
 **Autoria:** Lúcio de Araújo · **Família:** [RASGO](https://rasgoinstruments.arquiviagem.net/) ·
 **Versão:** v0.2.2 · **Licença:** GNU AGPL-3.0-or-later (ver
-[`LICENSE-AGPL-3.0.txt`](LICENSE-AGPL-3.0.txt) e
+[`LICENSE`](LICENSE) e
 [`CREDITS_AND_SOURCES.md`](CREDITS_AND_SOURCES.md))
 
 ### O que é
@@ -167,7 +167,7 @@ l'environnement, et écoutez ce que la vie à l'intérieur en fait.
 
 **Auteur :** Lúcio de Araújo · **Famille :** [RASGO](https://rasgoinstruments.arquiviagem.net/) ·
 **Version :** v0.2.2 · **Licence :** GNU AGPL-3.0-or-later (voir
-[`LICENSE-AGPL-3.0.txt`](LICENSE-AGPL-3.0.txt) et
+[`LICENSE`](LICENSE) et
 [`CREDITS_AND_SOURCES.md`](CREDITS_AND_SOURCES.md))
 
 ### Ce que c'est
@@ -241,7 +241,7 @@ no toca notas: toca el ambiente, y escucha lo que la vida de dentro hace con
 
 **Autoría:** Lúcio de Araújo · **Familia:** [RASGO](https://rasgoinstruments.arquiviagem.net/) ·
 **Versión:** v0.2.2 · **Licencia:** GNU AGPL-3.0-or-later (ver
-[`LICENSE-AGPL-3.0.txt`](LICENSE-AGPL-3.0.txt) y
+[`LICENSE`](LICENSE) y
 [`CREDITS_AND_SOURCES.md`](CREDITS_AND_SOURCES.md))
 
 ### Qué es

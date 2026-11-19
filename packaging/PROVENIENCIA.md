@@ -14,7 +14,7 @@ depender da pasta irmã.
 - **Adaptação ao Aquorbium:**
   - `install.sh`: sem as linhas dos dados do Trioio (o Aquorbium leva tudo
     dentro do binário);
-  - `empacotar.sh`: copia também `LICENSE-AGPL-3.0.txt`, o nome da licença
+  - `empacotar.sh`: copia também `LICENSE`, o nome da licença
     aqui;
   - `aquorbium.desktop` e `README-tarball.txt` foram escritos para o
     Aquorbium, no formato dos do Trioio.

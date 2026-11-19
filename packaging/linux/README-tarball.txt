@@ -26,4 +26,4 @@ ESPAÑOL
   Añadir al menú:         ./install.sh         (en ~/.local, sin root)
   Quitar:                 ./install.sh --remove
 
-License / Licença: AGPL-3.0-or-later (LICENSE-AGPL-3.0.txt)
+License / Licença: AGPL-3.0-or-later (LICENSE)

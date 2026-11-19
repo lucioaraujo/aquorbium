@@ -150,7 +150,7 @@ have not yet been opened by the author on real Windows and Mac machines.
 
 ### License
 
-AGPL-3.0-or-later (`LICENSE-AGPL-3.0.txt`). Credits and sources:
+AGPL-3.0-or-later (`LICENSE`). Credits and sources:
 `CREDITS_AND_SOURCES.md`. Problems: **rasgo.instruments@gmail.com**.
 
 ## Português
@@ -295,7 +295,7 @@ não foram abertos pelo autor em Windows e Mac reais.
 
 ### Licença
 
-AGPL-3.0-or-later (`LICENSE-AGPL-3.0.txt`). Créditos e fontes:
+AGPL-3.0-or-later (`LICENSE`). Créditos e fontes:
 `CREDITS_AND_SOURCES.md`. Problemas: **rasgo.instruments@gmail.com**.
 
 ## Français
@@ -450,7 +450,7 @@ Mac.
 
 ### Licence
 
-AGPL-3.0-or-later (`LICENSE-AGPL-3.0.txt`). Crédits et sources :
+AGPL-3.0-or-later (`LICENSE`). Crédits et sources :
 `CREDITS_AND_SOURCES.md`. Problèmes : **rasgo.instruments@gmail.com**.
 
 ## Español
@@ -597,5 +597,5 @@ en macOS. El autor aún no los ha abierto en Windows y Mac reales.
 
 ### Licencia
 
-AGPL-3.0-or-later (`LICENSE-AGPL-3.0.txt`). Créditos y fuentes:
+AGPL-3.0-or-later (`LICENSE`). Créditos y fuentes:
 `CREDITS_AND_SOURCES.md`. Problemas: **rasgo.instruments@gmail.com**.

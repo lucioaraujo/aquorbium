@@ -783,7 +783,7 @@ if (AQUORBIUM_BUILD_APP)
         set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
         set(CPACK_PACKAGE_VENDOR "RASGO")
         set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Aquorbium: an audible biome, five sound organisms in a sphere of water")
-        set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE-AGPL-3.0.txt")
+        set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
         if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
             # the .deb (the AppImage and the .tar.gz come from
             # packaging/linux/empacotar.sh, from the same installed tree). The

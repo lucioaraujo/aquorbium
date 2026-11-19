@@ -710,7 +710,7 @@ def rodape(lang):
   <nav>
     <a href="{REPO}">GitHub</a> ·
     <a href="{BLOB}/CREDITS_AND_SOURCES.md">{e(t["footer_credits"])}</a> ·
-    <a href="{BLOB}/LICENSE-AGPL-3.0.txt">{e(t["footer_license"])}</a>
+    <a href="{BLOB}/LICENSE">{e(t["footer_license"])}</a>
   </nav>
 </footer>
 <dialog class="contact-dialog" data-contact-dialog aria-labelledby="contact-title">
@@ -1161,7 +1161,7 @@ def pagina_ideia(lang):
 <section class="chapter" id="licenca">
   <h2>{e(d["license_h"])}</h2>
   {"".join("<p>%s</p>" % e(p) for p in d["license"])}
-  <p><a class="button" href="{BLOB}/LICENSE-AGPL-3.0.txt">LICENSE-AGPL-3.0.txt</a> <a class="button" href="https://www.gnu.org/licenses/agpl-3.0.html">gnu.org</a></p>
+  <p><a class="button" href="{BLOB}/LICENSE">LICENSE</a> <a class="button" href="https://www.gnu.org/licenses/agpl-3.0.html">gnu.org</a></p>
 </section>
 </div>
 </main>

@@ -7,7 +7,7 @@ Modular e do Antitotem.
 ## Autoria e licença
 
 **Lúcio de Araújo**, 2026. Código sob **GNU AGPL-3.0-or-later**: ver
-[`LICENSE-AGPL-3.0.txt`](LICENSE-AGPL-3.0.txt). Cada arquivo-fonte começa com
+[`LICENSE`](LICENSE). Cada arquivo-fonte começa com
 o cabeçalho SPDX, conferido pelo teste `aquorbium_license_headers`.
 
 A aplicação usa o **JUCE** sob **AGPLv3**, a opção livre do JUCE, sem licença

@@ -54,7 +54,7 @@ ICON=$(find "$WORK/AppDir/usr/share/icons" -type f -name "$ICON_NAME.png" 2>/dev
 T="$WORK/$NAME"
 mkdir -p "$T"
 cp -a "$WORK/AppDir/usr/bin" "$WORK/AppDir/usr/share" "$T/"
-for f in LICENSE COPYING LICENSE-AGPL-3.0.txt; do [ -f "$ROOT/$f" ] && cp "$ROOT/$f" "$T/"; done
+for f in LICENSE COPYING LICENSE; do [ -f "$ROOT/$f" ] && cp "$ROOT/$f" "$T/"; done
 cp "$HERE/install.sh" "$T/"
 cp "$HERE/README-tarball.txt" "$T/README.txt"
 chmod +x "$T/install.sh"
