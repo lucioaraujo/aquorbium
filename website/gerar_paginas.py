@@ -343,7 +343,7 @@ ORGANISMOS = [("MORPH", "cyan"), ("GRAIN", "amber"), ("MODAL", "coral"), ("PULSA
 T = {
     "pt-BR": {
         "title": "Aquorbium — um bioma audível",
-        "desc": "Aquorbium: um instrumento ecológico da família RASGO. Cinco organismos sonoros vivem numa esfera de água, se ouvem, caçam, fogem, cortejam e cantam; cada abertura é uma peça nova.",
+        "desc": "Aquorbium: instrumento ecológico da família RASGO. Cinco organismos sonoros vivem numa esfera de água, se ouvem e cantam; cada abertura é uma peça nova.",
         "strip": "RASGO — família de instrumentos e pesquisa sonora",
         "skip": "Pular para o conteúdo",
         "langnav": "Idioma",
@@ -419,7 +419,7 @@ T = {
     },
     "en": {
         "title": "Aquorbium — an audible biome",
-        "desc": "Aquorbium: an ecological instrument of the RASGO family. Five sound organisms live in a sphere of water, hear each other, hunt, flee, court and sing; every opening is another piece.",
+        "desc": "Aquorbium: an ecological instrument of the RASGO family. Five sound organisms live in a sphere of water, hear each other and sing; every opening is a new piece.",
         "strip": "RASGO — a family of instruments and sound research",
         "skip": "Skip to content",
         "langnav": "Language",
@@ -495,7 +495,7 @@ T = {
     },
     "fr": {
         "title": "Aquorbium — un biome audible",
-        "desc": "Aquorbium : un instrument écologique de la famille RASGO. Cinq organismes sonores vivent dans une sphère d'eau, s'entendent, chassent, fuient, paradent et chantent ; chaque ouverture est une nouvelle pièce.",
+        "desc": "Aquorbium : instrument écologique de la famille RASGO. Cinq organismes sonores vivent dans une sphère d'eau, s'écoutent et chantent ; chaque ouverture est une pièce.",
         "strip": "RASGO — famille d'instruments et de recherche sonore",
         "skip": "Aller au contenu",
         "langnav": "Langue",
@@ -571,7 +571,7 @@ T = {
     },
     "es": {
         "title": "Aquorbium — un bioma audible",
-        "desc": "Aquorbium: un instrumento ecológico de la familia RASGO. Cinco organismos sonoros viven en una esfera de agua, se oyen, cazan, huyen, cortejan y cantan; cada apertura es una pieza nueva.",
+        "desc": "Aquorbium: instrumento ecológico de la familia RASGO. Cinco organismos sonoros viven en una esfera de agua, se oyen y cantan; cada apertura es una pieza nueva.",
         "strip": "RASGO — familia de instrumentos e investigación sonora",
         "skip": "Saltar al contenido",
         "langnav": "Idioma",
